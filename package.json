@@ -1,20 +1,16 @@
 {
   "name": "ShopOnlineProject",
   "version": "1.0.0",
-  "description": "Project of the online store using Reactjs",
   "main": "index.js",
+  "repository": "https://github.com/PioterDz/ShopOnlineProject.git",
+  "author": "Piotr Dzienis <dojlidy.zubr@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm-run-all -p -l start:*",
+    "start:server": "cd server && node server.js",
+    "start:client": "cd client && yarn start"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PioterDz/ShopOnlineProject.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/PioterDz/ShopOnlineProject/issues"
-  },
-  "homepage": "https://github.com/PioterDz/ShopOnlineProject#readme"
+  "dependencies": {
+    "npm-run-all": "4.1.5"
+  }
 }
