@@ -1,0 +1,20 @@
+{
+  "name": "ShopOnlineProject",
+  "version": "1.0.0",
+  "description": "Project of the online store using Reactjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PioterDz/ShopOnlineProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PioterDz/ShopOnlineProject/issues"
+  },
+  "homepage": "https://github.com/PioterDz/ShopOnlineProject#readme"
+}
