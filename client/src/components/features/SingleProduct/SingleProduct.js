@@ -3,10 +3,21 @@ import { Link } from 'react-router-dom';
 
 import './SingleProduct.scss';
 
-const SingleProduct = () => (
-    <div className="SingleProduct col-6">
-        <Link to="/productpage">SingleProduct</Link>
-    </div>
-);
+const SingleProduct = (props) => {
+
+    const { product } = props;
+
+    return (
+        <div className="SingleProduct col-6">
+            <Link to="/productpage">
+                <p>{ product.name }</p>
+                <p>{ product.price } $</p>
+                <p>{ product.desc }</p>
+            </Link>
+        </div>
+    );
+}
+    
+
 
 export default SingleProduct;

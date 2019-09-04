@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import './Logo.scss';
 
 const Logo = () => (
-    <Link className="Logo" to="/">
+    <Link className="Logo" to="/home">
         <FontAwesomeIcon icon={faUmbrellaBeach} size="3x" />
         <h1>ZaplanujMiUrlop</h1>
     </Link>

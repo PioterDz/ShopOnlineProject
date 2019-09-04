@@ -5,10 +5,10 @@ import './Sort.scss';
 const Sort = () => (
     <div className="Sort col-4">
         <h4>Sortuj</h4>
-        <p>Nazwa A-Z</p>
-        <p>Nazwa Z-A</p>
-        <p>Cena rosnąco</p>
-        <p>Cena malejąco</p>
+        <p className="text-secondary">Nazwa A-Z</p>
+        <p className="text-secondary">Nazwa Z-A</p>
+        <p className="text-secondary">Cena rosnąco</p>
+        <p className="text-secondary">Cena malejąco</p>
     </div>
 );
 

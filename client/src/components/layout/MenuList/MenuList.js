@@ -1,14 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './MenuList.scss';
 
 const MenuList = () => (
 
     <ul className="MenuList">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/faq">Faq</Link></li>
-        <li><Link to="/rules">Regulamin</Link></li>
-        <li><Link to="/contact">Kontakt</Link></li>
+        <li><NavLink to="/home" activeClassName="active">Home</NavLink></li>
+        <li><NavLink to="/faq" activeClassName="active">Faq</NavLink></li>
+        <li><NavLink to="/rules" activeClassName="active">Regulamin</NavLink></li>
+        <li><NavLink to="/contact" activeClassName="active">Kontakt</NavLink></li>
     </ul>
 
 );

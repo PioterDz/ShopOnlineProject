@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
-import Home from './components/pages/HomePage/HomePage';
+import HomePage from './components/pages/HomePage/HomePage';
 import FaqPage from './components/pages/FaqPage/FaqPage';
 import RulesPage from './components/pages/RulesPage/RulesPage';
 import ContactPage from './components/pages/ContactPage/ContactPage';
@@ -16,7 +16,7 @@ class App extends React.Component {
         return (
             <MainLayout>
                 <Switch>
-                    <Route exact path="/" component={Home} />
+                    <Route exact path="/home" component={HomePage} />
                     <Route exact path="/faq" component={FaqPage} />
                     <Route exact path="/rules" component={RulesPage} />
                     <Route exact path="/contact" component={ContactPage} />

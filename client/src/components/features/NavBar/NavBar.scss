@@ -1,4 +1,18 @@
 .NavBar {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 15%;
+
+    a {
+        color: black;
+        text-decoration: none;
+
+        &:hover {
+            color: #6c757d;
+        }
+    }
+
+    .active {
+        color: #6c757d;
+    }
 }

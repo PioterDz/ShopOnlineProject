@@ -1,15 +1,27 @@
-import selectors from './productSelectors';
-import actions from './productActions';
+import initialState from '../initialState';
 
-/* INITIAL STATE */
 
-const initialState = [];
+// // action name creator
+// const reducerName = 'product';
+// const createActionName = name => `app/${reducerName}/${name}`;
 
-/* REDUCER */
+// ACTIONS 
 
-export default function reducer(statePart = initialState, action = {}) {
+export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
+
+export const loadProducts = () => ({ type: LOAD_PRODUCTS });
+
+// SELECTORS
+
+export const getProducts = ({ products }) => products.data;
+
+// REDUCER 
+
+export default function productReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case LOAD_PRODUCTS:
+      return state;
     default:
-      return statePart;
+      return state;
   }
 };
