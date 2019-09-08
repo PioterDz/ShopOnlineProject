@@ -1,0 +1,22 @@
+.CartPage {
+    display: flex;
+    flex-direction: column;
+
+    .ProductInCartDisplay {
+        display: flex;
+        flex-direction: row;
+
+        .ProductInCart {
+            display: flex;
+            flex-direction: row;
+        }
+
+    }
+
+    .CartSummary {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+    }
+}

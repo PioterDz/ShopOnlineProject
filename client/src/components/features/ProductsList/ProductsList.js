@@ -2,19 +2,25 @@ import React from 'react';
 
 import SingleProduct from '../SingleProduct/SingleProduct';
 
-const ProductsList = (props) => {
+class ProductsList extends React.Component {
 
-    const { products } = props;
-    
-    return (
-        <div className="ProductsList col-8">
-            <div className="row">
-                {products.map(el =>
-                    <SingleProduct key={el.id} product={el} />
-                )}
+    render() {
+
+        const { products, currentPage, displayPerPage } = this.props;
+        
+        const arrayOfProducts = products.filter((elem, id) => (id >= displayPerPage * (currentPage - 1)) && (id <= (displayPerPage * currentPage) - 1));
+        
+        return (
+            <div className="ProductsList col-8">
+                <div className="row">
+                    {arrayOfProducts.map((el, id) =>
+                        <SingleProduct key={id} product={el} />
+                    )}
+                </div>
             </div>
-        </div>
-    )
+        );
+    }
+
 }
 
 export default ProductsList;

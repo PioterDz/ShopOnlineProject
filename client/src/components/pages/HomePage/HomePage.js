@@ -3,24 +3,41 @@ import Sort from '../../features/Sort/Sort';
 import ProductsList from '../../features/ProductsList/ProductsList';
 import Pagination from '../../common/Pagination/Pagination';
 
-import initialState from '../../../redux/initialState';
-
 import './HomePage.scss';
 
 
 class HomePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = initialState;
+
+    onPageChange = (pageChoosed) => {
+        const { pageChange } = this.props;
+
+        pageChange(pageChoosed);
+    }
+
+    onSort = (sortedData) => {
+        const { sort } = this.props;
+
+        sort(sortedData);
     }
 
     render() {
+        const { products, page, displayPerPage, numberOfPages } = this.props;
         
         return (
             <div className="HomePage row">
-                <Sort />
-                <ProductsList products={this.state.data} />
-                <Pagination currentPage={this.state.page} numberOfItems={this.state.data.length} displayNumber={this.state.displayPerPage} />
+                <Sort 
+                    products={products}
+                    handleSort={this.onSort}
+                />
+                <ProductsList 
+                    products={products}
+                    currentPage={page}
+                    displayPerPage={displayPerPage}
+                />
+                <Pagination
+                    onPageChange={this.onPageChange}
+                    numberOfPages={numberOfPages}
+                />
             </div>
         );
     }

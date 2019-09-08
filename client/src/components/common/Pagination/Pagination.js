@@ -1,21 +1,21 @@
 import React from 'react';
 
-const Pagination = (props) => {
+class Pagination extends React.Component {
 
-    const { currentPage, numberOfItems, displayNumber } = props;
-    
-    const numberOfPages = Math.ceil(numberOfItems / displayNumber);
-    let pages = [];
-
-    for(let i=1 ; i <= numberOfPages ; i++) {
-        pages.push(i);
+    changePage = (e) => {
+        this.props.onPageChange(e.target.value);
     }
+    
+    render() {
 
-    return (
-        <div className="Pagination d-flex col-4 offset-8">
-           {pages.map((el, id) => <p className="p-3" key={id}>{el}</p>)}
-        </div>
-    );
+        const { numberOfPages } = this.props;
+
+        return (
+            <ul className="Pagination list-group list-group-horizontal-md flex-fill col-4 offset-8">
+               {[...Array(numberOfPages)].map((el, id) => <li onClick={this.changePage} className="list-group-item" key={id} value={id + 1}>{id + 1}</li>)}
+            </ul>
+        );
+    }
 }
 
 export default Pagination;

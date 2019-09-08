@@ -1,64 +1,72 @@
 const initialState = {
     page: 1,
+    number: 0,
     displayPerPage: 6,
-    sortType: 'AtoZ',
     cart: [],
+    totalPrice: 0,
     data: [
         {
           id: '101',
           img: './images/01.jpg',
-          name: 'Holiday 1',
+          name: 'Rodos',
           price: '65',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim malesuada tristique. Mauris id nunc non sem accumsan euismod.',
-          productState: 'nowość'
+          productState: 'nowość',
+          countNumber: 0
         },
         {
           id: '102',
           img: './images/02.jpg',
-          name: 'Holiday 2',
+          name: 'Kreta',
           price: '165',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim malesuada tristique. Mauris id nunc non sem accumsan euismod.',
-          productState: 'ostatnie miejsca'
+          productState: 'ostatnie miejsca',
+          countNumber: 0
         },
         {
           id: '103',
           img: './images/03.jpg',
-          name: 'Holiday 3',
+          name: 'Zakynthos',
           price: '75',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim malesuada tristique. Mauris id nunc non sem accumsan euismod.',
-          productState: ''
+          productState: '',
+          countNumber: 0
         },
         {
           id: '104',
           img: './images/04.jpg',
-          name: 'Holiday 4',
+          name: 'Alanya',
           price: '55',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim malesuada tristique. Mauris id nunc non sem accumsan euismod.',
-          productState: ''
+          productState: '',
+          countNumber: 0
         },
         {
           id: '105',
           img: './images/05.jpg',
-          name: 'Holiday 5',
+          name: 'Lwów',
           price: '99',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim malesuada tristique. Mauris id nunc non sem accumsan euismod.',
-          productState: ''
+          productState: '',
+          countNumber: 0
         },
         {
           id: '106',
           img: './images/06.jpg',
-          name: 'Holiday 6',
+          name: 'Zakopane',
           price: '79',
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim malesuada tristique. Mauris id nunc non sem accumsan euismod.',
-          productState: ''
+          productState: '',
+          countNumber: 0
         },
         {
             id: '107',
             img: './images/07.jpg',
-            name: 'Holiday 7',
+            name: 'Marsylia',
             price: '79',
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dignissim malesuada tristique. Mauris id nunc non sem accumsan euismod.',
-            productState: ''
+            productState: '',
+            countNumber: 0
         },
     ]
 };

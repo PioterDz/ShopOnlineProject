@@ -9,7 +9,7 @@ const SingleProduct = (props) => {
 
     return (
         <div className="SingleProduct col-6">
-            <Link to="/productpage">
+            <Link to={'productpage/' + product.id}>
                 <p>{ product.name }</p>
                 <p>{ product.price } $</p>
                 <p>{ product.desc }</p>
