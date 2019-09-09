@@ -1,0 +1,21 @@
+.Sort {
+    height: 100%;
+
+    &::after {
+        content: '';
+        width: 200px;
+        height: 0.5px;
+        position: absolute;
+        background-color: $light-dark;
+    }
+
+    .SortBy {
+        cursor: pointer;
+        color: $light-dark;
+
+        &:hover {
+            @extend %onhover;
+            color: $dark;
+        }
+    }
+}

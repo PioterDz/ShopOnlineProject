@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MenuList from '../../layout/MenuList/MenuList';
-import './Footer.scss';
 
 const Footer = () => (
     <footer>

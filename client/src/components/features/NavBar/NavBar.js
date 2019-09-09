@@ -1,20 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { getCart } from '../../../redux/productRedux/productReducer'
 
 import Logo from '../../common/Logo/Logo';
 import MenuList from '../../layout/MenuList/MenuList';
+import CartIcon from '../../common/CartIcon/CartIcon';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-
-import './NavBar.scss';
-
-const NavBar = () => (
+const NavBar = (props) => (
     <nav className="NavBar">
         <Logo />
         <MenuList />
-        <NavLink to="/cart" activeClassName="active"><FontAwesomeIcon icon={faShoppingBag} size="2x" /></NavLink>
+        <NavLink to="/cart" activeClassName="active">
+            <CartIcon numberOfProducts={props.cart.length} />
+        </NavLink>
     </nav>
 );
-    
-export default NavBar;
+
+const mapStateToProps = state => ({
+    cart: getCart(state),
+});
+
+
+export default connect(mapStateToProps, null)(NavBar);

@@ -1,11 +1,8 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook, faInstagram, faYoutube, faFacebookMessenger, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faYoutube, faFacebookMessenger, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faMapMarkedAlt, faMobileAlt, faAt } from '@fortawesome/free-solid-svg-icons';
-
-import './ContactPage.scss';
-
 
 const ContactPage = () => (
     <div className="ContactPage">
@@ -19,7 +16,7 @@ const ContactPage = () => (
         <p>123456789</p>
 
         <FontAwesomeIcon icon={faAt} size="2x" />
-        <p>zaplanujmi@urlop.pl</p>
+        <p>bzd@urlop.pl</p>
 
         <h5>Pogadaj z nami przez</h5>
         <div className="social-com">

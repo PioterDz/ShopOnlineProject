@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,OAAO,CAAC;EACJ,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,aAAa;EAC9B,aAAa,EAAE,GAAG;CAcrB;;AAjBD,AAKI,OALG,CAKH,CAAC,CAAC;EACE,KAAK,EAAE,KAAK;EACZ,eAAe,EAAE,IAAI;CAKxB;;AAZL,AASQ,OATD,CAKH,CAAC,AAII,MAAM,CAAC;EACJ,KAAK,EAAE,OAAO;CACjB;;AAXT,AAcI,OAdG,CAcH,OAAO,CAAC;EACJ,KAAK,EAAE,OAAO;CACjB",
-    "sources": [
-        "NavBar.scss"
-    ],
-    "names": [],
-    "file": "NavBar.css"
-}

@@ -1,0 +1,20 @@
+.NavBar {
+    @include flex(space-around, center, row);
+    margin-bottom: 15%;
+    background-image: linear-gradient($secondary 70%, $primary);
+
+    a {
+        color: $primary;
+        text-decoration: none;
+
+        &:hover {
+            @extend %onhover;
+            color: $third;
+        }
+
+    }
+
+    .active {
+        color: $third;
+    }
+}

@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Manjari:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite|Unkempt&display=swap');
+
+@import './common/custom';
+@import './common/animations';
+@import './common/variables';
+@import './common/mixins';
+@import './common/global';
+
+@import './components/layout/MainLayout';
+@import './components/layout/MenuList';
+@import './components/layout/PageContainer';
+
+@import './components/features/NavBar';
+@import './components/features/Footer';
+@import './components/features/SingleProduct';
+@import './components/features/Sort';
+
+@import './components/common/CartIcon';
+@import './components/common/Counter';
+@import './components/common/Logo';
+
+@import './components/pages/HomePage';
+@import './components/pages/ProductPage';
+@import './components/pages/CartPage';
+@import './components/pages/ContactPage';
+@import './components/pages/NotFoundPage';
+
+
+

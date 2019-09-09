@@ -1,18 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './SingleProduct.scss';
 
 const SingleProduct = (props) => {
 
     const { product } = props;
 
     return (
-        <div className="SingleProduct col-6">
+        <div className="SingleProduct col-5 bg-light">
             <Link to={'productpage/' + product.id}>
+                { product.productState ? <p> { product.productState } </p> : '' }
+                <img alt="product" src={`./images/${product.img}`} />
                 <p>{ product.name }</p>
                 <p>{ product.price } $</p>
-                <p>{ product.desc }</p>
             </Link>
         </div>
     );

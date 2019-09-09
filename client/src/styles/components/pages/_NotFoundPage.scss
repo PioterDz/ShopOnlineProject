@@ -1,0 +1,12 @@
+.ErrorPage {
+    @include flex(center, center, row);
+    @extend %pagepadding;
+
+    .Text404 {
+        @include flex(flex-start, center, column);
+
+        .btn {
+            margin-top: 30px;
+        }
+    }
+}

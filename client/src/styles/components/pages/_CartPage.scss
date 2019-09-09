@@ -1,0 +1,32 @@
+.CartPage {
+    @include flex(space-between, center, column);
+    min-height: 50vh;
+    @extend %pagepadding;
+
+    h1 {
+        align-self: flex-start;
+    }
+
+    .ProductInCartDisplay {
+        width: 100%;
+        
+        .SingleProductInCart {
+            width: 100%;
+            @include flex(space-around, center, row);
+
+            .DescInCart {
+                @include flex(center, center, column);
+            }
+        }
+    }
+
+    .CartSummary {
+        align-self: flex-end;
+        @include flex(center, flex-start, column);
+    }
+
+    button {
+        padding: 10px 75px;
+        align-self: flex-end;
+    }
+}

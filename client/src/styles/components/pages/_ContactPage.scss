@@ -1,0 +1,4 @@
+.ContactPage {
+    @include flex(flex-start, center, column);
+    @extend %pagepadding;
+}

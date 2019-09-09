@@ -1,41 +1,29 @@
 import React from 'react';
 
-import './ProductPage.scss';
-
 class ProductPage extends React.Component {
 
-    handleAddToCart = (paramId) => {
+    handleAddToCart = () => {
         const { addToCart, products } = this.props;
         
-        const filteredArray = products.filter(el => el.id === paramId);
+        const filteredArray = products.filter(el => el.id === this.props.match.params.id);
         addToCart(filteredArray);
-    }
-
-    handleTotalPriceChange = (paramId) => {
-        const { changeTotalPrice, products } = this.props;
-        
-        const filteredArray = products.find(el => el.id === paramId); 
-        changeTotalPrice(parseInt(filteredArray.price));
     }
 
     render() {
         const { products } = this.props;
-        const paramsId = this.props.match.params.id;
-        const product = products.find(el => el.id === paramsId);
+        const product = products.find(el => el.id === this.props.match.params.id);
 
         return (
             <div className="ProductPage">
                 <img alt="Product" />
-                <div className="Product-info">
+                <div className="ProductInfo">
                     <h2>{product.name}</h2>
-                    <p>{product.price} $</p>
+                    <p className="text-secondary">{product.price} $</p>
                     <p>{product.desc}</p>
                     <button 
-                        className="btn btn-dark btn-lg" 
-                        onClick={(e) => {
-                            this.handleAddToCart(paramsId); 
-                            this.handleTotalPriceChange(paramsId);
-                        }}>
+                        className="addToCartBtn"
+                        variant="btn btn-lg" 
+                        onClick={this.handleAddToCart}>
                         Dodaj do koszyka
                     </button>
                 </div>

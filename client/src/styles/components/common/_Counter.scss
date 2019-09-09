@@ -1,0 +1,12 @@
+.Counter {
+    @include flex(flex-start, flex-end, column);
+    align-self: flex-end;
+
+    .CountSection {
+        @include flex(flex-start, center, row);
+    }
+
+    p {
+        margin: 0;
+    }
+}

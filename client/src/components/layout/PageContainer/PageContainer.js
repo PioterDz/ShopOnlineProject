@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PageContainer = ({ children }) => (
-    <div className="PageContainer container-fluid">
+    <div className="PageContainer">
         {children}
     </div>
 );

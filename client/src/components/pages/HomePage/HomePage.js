@@ -3,9 +3,6 @@ import Sort from '../../features/Sort/Sort';
 import ProductsList from '../../features/ProductsList/ProductsList';
 import Pagination from '../../common/Pagination/Pagination';
 
-import './HomePage.scss';
-
-
 class HomePage extends React.Component {
 
     onPageChange = (pageChoosed) => {
@@ -37,6 +34,7 @@ class HomePage extends React.Component {
                 <Pagination
                     onPageChange={this.onPageChange}
                     numberOfPages={numberOfPages}
+                    currentPage={page}
                 />
             </div>
         );

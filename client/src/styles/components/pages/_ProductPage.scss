@@ -1,0 +1,21 @@
+.ProductPage {
+    @include flex(center, center, row);
+    @extend %pagepadding;
+
+    .ProductInfo {
+
+        .addToCartBtn {
+            background-color: $third;
+            color: $primary;
+        
+            &:hover {
+                @extend %onhover;
+                background-color: $third;
+            }
+        }
+    }
+
+    img {
+        width: 50%;
+    }
+}
