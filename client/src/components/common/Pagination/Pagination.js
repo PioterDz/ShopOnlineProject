@@ -1,8 +1,8 @@
 import React from 'react';
 import uuid from 'uuidv4';
+import { PropTypes } from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 class Pagination extends React.Component {
 
@@ -25,13 +25,19 @@ class Pagination extends React.Component {
         const { numberOfPages, currentPage } = this.props;
 
         return (
-            <ul className="Pagination list-group list-group-horizontal-md flex-fill align-items-center col-4 offset-8">
-                {currentPage !== 1 ? <FontAwesomeIcon onClick={this.previousPage} icon={faArrowLeft} /> : ''}
-                {[...Array(numberOfPages)].map((el, id) => <li onClick={this.changePage} className="list-group-item" key={uuid()} value={id + 1}>{id + 1}</li>)}
-                {currentPage !== numberOfPages ? <FontAwesomeIcon onClick={this.nextPage} icon={faArrowRight} /> : ''}
+            <ul className="Pagination col-4 offset-8">
+                <FontAwesomeIcon onClick={this.previousPage} icon="arrow-left" className={"mt-1 " + (currentPage !== 1 ? "visible" : "invisible")} />
+                {[...Array(numberOfPages)].map((el, id) => <li onClick={this.changePage} className="ListOfPagesNumbers numbers" key={uuid()} value={id + 1}>{id + 1}</li>)}
+                <FontAwesomeIcon onClick={this.nextPage} icon="arrow-right" className={"mt-1 " + (currentPage !== numberOfPages ? "visible" : "invisible")} />
             </ul>
         );
     }
+}
+
+Pagination.propTypes = {
+    onPageChange: PropTypes.func.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    numberOfPages: PropTypes.number.isRequired,
 }
 
 export default Pagination;

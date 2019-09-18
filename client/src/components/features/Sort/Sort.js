@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { PropTypes } from 'prop-types';
+
 class Sort extends React.Component {
 
     alphabetSort = () => {
@@ -42,7 +44,11 @@ class Sort extends React.Component {
             </div>
         );
     }
+}
 
+Sort.propTypes = {
+    products: PropTypes.array.isRequired,
+    handleSort: PropTypes.func.isRequired,
 }
 
 export default Sort;

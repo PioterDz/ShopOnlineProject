@@ -5,11 +5,26 @@
     flex-direction: $direction;
 }
 
+@mixin square-size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
 %onhover {
     transition: 0.4s ease-in;
 }
 
 %pagepadding {
     padding: 0 30px;
+}
+
+%onhoverlist {
+    @extend %onhover;
+    color: $light-dark;
+    cursor: pointer;
+
+    &:hover {
+        color: $dark;
+    }
 }
 

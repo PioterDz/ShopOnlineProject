@@ -3,19 +3,19 @@
     @extend %pagepadding;
 
     .ProductInfo {
+        margin-left: 10%;
 
         .addToCartBtn {
             background-color: $third;
             color: $primary;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
         
             &:hover {
                 @extend %onhover;
-                background-color: $third;
+                background-color: $third-darker;
             }
         }
-    }
-
-    img {
-        width: 50%;
     }
 }

@@ -1,4 +1,13 @@
 .SingleProduct {
     padding: 20px;
     margin: 15px;
+    height: 100%;
+
+    .hidden-text {
+        height: 24px;
+    }
+
+    img {
+        width: 100%;
+    }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const RulesPage = () => (
-    <div className="RulesPage">
+    <div className="RulesPage page">
         <h1>Regulamin</h1>
         <h4>1)</h4>
         <p>In hac habitasse platea dictumst. Donec luctus purus quam, eleifend sodales justo vehicula at. Cras gravida felis in odio consequat, pharetra pulvinar arcu dapibus.

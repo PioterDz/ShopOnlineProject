@@ -1,5 +1,6 @@
 import React from 'react';
 import uuid from 'uuidv4';
+import { PropTypes } from 'prop-types';
 
 import SingleProduct from '../SingleProduct/SingleProduct';
 
@@ -13,7 +14,7 @@ class ProductsList extends React.Component {
         const arrayOfProducts = products.filter((elem, id) => (id >= displayPerPage * (currentPage - 1)) && (id <= (displayPerPage * currentPage) - 1));
         
         return (
-            <div className="ProductsList col-8 d-flex align-items-center">
+            <div className="ProductsList col-8 d-flex align-items-center justify-content-center">
                 <div className="row">
 
                         {arrayOfProducts.map(el =>
@@ -24,7 +25,12 @@ class ProductsList extends React.Component {
             </div>
         );
     }
+}
 
+ProductsList.propTypes = {
+    products: PropTypes.array.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    displayPerPage: PropTypes.number.isRequired,
 }
 
 export default ProductsList;

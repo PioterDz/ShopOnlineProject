@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCart } from '../../../redux/productRedux/productReducer'
+import { PropTypes } from 'prop-types';
 
 import Logo from '../../common/Logo/Logo';
 import MenuList from '../../layout/MenuList/MenuList';
@@ -20,6 +21,10 @@ const NavBar = (props) => (
 const mapStateToProps = state => ({
     cart: getCart(state),
 });
+
+NavBar.propTypes = {
+    cart: PropTypes.array.isRequired,
+}
 
 
 export default connect(mapStateToProps, null)(NavBar);

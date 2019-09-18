@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 
 class Counter extends React.Component {
 
@@ -9,12 +10,12 @@ class Counter extends React.Component {
 
     minusOne = () => {
         const { product, substractFromCounter } = this.props;
-        substractFromCounter(product.countNumber, product.id);
+        substractFromCounter(product);
     }
 
     plusOne = () => {
         const { product, addToCounter } = this.props;
-        addToCounter(product.countNumber, product.id);
+        addToCounter(product.id);
     }
 
     render() {
@@ -25,15 +26,22 @@ class Counter extends React.Component {
             <div className="Counter col-2">
                 <div className="CountSection">
                     <span onClick={this.minusOne} className="btn-light mr-2">-</span>
-                    <h3 className="my-0 mx-2">{ product.countNumber }</h3>
+                    <h3 className="mb-1 mx-2">{ product.countNumber }</h3>
                     <span onClick={this.plusOne} className="btn-light mx-2">+</span>
                     <p className="ml-2">szt</p>
                 </div>
-                <p className="text-danger mt-4 mb-2" onClick={this.deleteProduct}>usuń produkt</p>
+                <p className="text-danger" onClick={this.deleteProduct}>usuń produkt</p>
             </div>
         );
     }
 
 }
+
+Counter.propTypes = {
+    product: PropTypes.object.isRequired,
+    addToCounter: PropTypes.func.isRequired,
+    substractFromCounter: PropTypes.func.isRequired,
+    deleteProduct: PropTypes.func.isRequired,
+};
 
 export default Counter;
