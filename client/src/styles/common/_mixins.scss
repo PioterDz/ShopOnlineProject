@@ -1,0 +1,36 @@
+@mixin flex($justify, $align-it, $direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align-it;
+    flex-direction: $direction;
+}
+
+@mixin square-size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin frame-model($color, $padding) {
+    background-color: $color;
+    padding: $padding;
+    border-radius: 10px;
+}
+
+%onhover {
+    transition: 0.4s ease-in;
+}
+
+%pagepadding {
+    margin: 0 30px;
+}
+
+%onhoverlist {
+    @extend %onhover;
+    color: $light-dark;
+    cursor: pointer;
+
+    &:hover {
+        color: $dark;
+    }
+}
+

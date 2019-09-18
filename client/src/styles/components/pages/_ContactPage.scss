@@ -1,0 +1,20 @@
+.ContactPage {
+    @include flex(flex-start, center, column);
+    @include frame-model($background-transparent, 40px);
+
+    .inContactIcon {
+        color: $third;
+        margin: 30px;
+        cursor: pointer;
+
+        &:hover {
+            @extend %onhover;
+            color: $third-darker;
+        }
+    }
+
+    .socialContact {
+        @include flex(flex-start, center, column);
+        margin-top: 50px;
+    }
+}

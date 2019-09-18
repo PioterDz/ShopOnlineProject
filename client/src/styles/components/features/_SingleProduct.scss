@@ -1,0 +1,13 @@
+.SingleProduct {
+    margin: 15px;
+    height: 100%;
+    @include frame-model($background-transparent, 20px);
+
+    .hidden-text {
+        height: 24px;
+    }
+
+    img {
+        width: 100%;
+    }
+}

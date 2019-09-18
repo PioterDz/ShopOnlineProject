@@ -1,0 +1,15 @@
+.Pagination {
+    @include flex(flex-start, center, row);
+    margin-top: 20px;
+
+    .ListOfPagesNumbers {
+        list-style-type: none;
+        margin: 0 10px;
+        @include square-size(14px, 16px);
+        @extend %onhoverlist;
+    }
+
+    .visible {
+        @extend %onhoverlist;
+    }
+}
