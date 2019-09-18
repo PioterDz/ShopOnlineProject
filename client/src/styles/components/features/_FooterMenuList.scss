@@ -1,0 +1,8 @@
+.FooterMenuList {
+    @include flex(space-around, center, row);
+    width: 100%;
+}
+
+@media (min-width: 576px) {
+    width: 50%;
+}

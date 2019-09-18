@@ -1,34 +1,53 @@
 .Logo {
-    display: flex;
+    @include flex(center, center, row);
     position: relative;
 
-    &:hover {
-        transition: ease-out 0.8s;
-        
-        h1 {
-            transition: opacity ease-in 0.4s;
-            opacity: 0;
-        }
-
-        p {
-            font-size: 24px;
-            top:50%;
-            transform: translate(0,-100%);
-            text-align: center;
-        }
+    .Bar {
+        color: $third;
+        margin-right: 30px;
     }
 
     h1 {
+        display: none;
         font-family: 'Unkempt', cursive;
-        font-size: 4.5rem;
+        font-size: 3.5rem;
         color: $third;
     }
 
     p {
+        display: none;
+        font-size: 0.8rem;
         font-family: 'Special Elite', cursive;
         position: absolute;
         bottom: 0;
-        transform: translate(-20%,100%);
+        right: 0;
+        transform: translate(-25%, 0);
         text-shadow: 0.5px 0.5px black;
+        margin: 0;
+    }
+}
+
+@media (min-width: 400px) {
+
+    .Logo {
+
+        h1, p {
+            display: block;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    
+    .Logo {
+
+        h1 {
+            font-size: 4.5rem;
+        }
+
+        p {
+            transform: translate(-60%, 0%);
+            font-size: 1rem;
+        }
     }
 }

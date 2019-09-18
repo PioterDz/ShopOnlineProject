@@ -6,6 +6,10 @@
     width: 50%;
     text-transform: uppercase;
 
+    .listMargin {
+        margin: 10px 0;
+    }
+
     .navlink {
         color: $primary;
         text-decoration: none;
@@ -13,6 +17,20 @@
         &:hover {
             @extend %onhover;
             color: $third;
+        }
+    }
+}
+
+.MenuOpen {
+    @include flex(flex-start, flex-start, column);
+    position: absolute;
+    top: 0;
+    transform: translate(0, 60%);
+
+    .navlink {
+
+        &:hover {
+            @include frame-model($background-transparent, 10px);
         }
     }
 }

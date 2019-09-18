@@ -35,7 +35,7 @@ class Sort extends React.Component {
 
     render() {
         return (
-            <div className="Sort col-4">
+            <div className="Sort col-md-4">
                 <h4>Sortuj</h4>
                 <p className="SortBy" onClick={this.alphabetSort}>Nazwa A-Z</p>
                 <p className="SortBy" onClick={this.reverseAlphabetSort}>Nazwa Z-A</p>

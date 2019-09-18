@@ -12,7 +12,7 @@
         
         .SingleProductInCart {
             width: 100%;
-            @include flex(space-around, center, row);
+            @include flex(space-around, center, column);
 
             .DescInCart {
                 @include flex(center, center, column);
@@ -34,5 +34,18 @@
     button {
         padding: 10px 75px;
         align-self: flex-end;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .CartPage {
+        
+        .ProductInCartDisplay {
+            
+            .SingleProductInCart {
+                @include flex(space-around, center, row);
+            }
+        }
     }
 }

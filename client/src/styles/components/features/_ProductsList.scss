@@ -1,0 +1,6 @@
+.ProductsList {
+    
+    .row {
+        @include flex(center, center, row);
+    }
+}

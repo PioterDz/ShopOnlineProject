@@ -2,6 +2,10 @@
     height: 100%;
     margin: 15px 0;
 
+    h4 {
+        color: $primary;
+    }
+
     &::after {
         content: '';
         width: 200px;

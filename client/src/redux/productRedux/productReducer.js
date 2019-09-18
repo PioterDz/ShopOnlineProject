@@ -12,6 +12,7 @@ export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const MAKE_DISCOUNT = 'MAKE_DISCOUNT';
 export const CALCULATE_PRICE = 'CALCULATE_PRICE';
 export const CHANGE_MODAL_STATE = 'CHANGE_MODAL_STATE';
+export const TOGGLE_MENU = 'OPEN_MENU';
 
 
 export const plusToCounter = id => ({ id, type: PLUS_TO_COUNTER });
@@ -23,6 +24,7 @@ export const deleteFromCart = payload => ({ payload, type: DELETE_FROM_CART });
 export const makeDiscount = () => ({ type: MAKE_DISCOUNT });
 export const calculatePrice = () => ({ type: CALCULATE_PRICE });
 export const changeModalState = () => ({ type: CHANGE_MODAL_STATE });
+export const toggleMenu = () => ({ type: TOGGLE_MENU });
 
 // SELECTORS
 
@@ -35,6 +37,7 @@ export const getTotalPrice = product => product.totalPrice;
 export const getModalState = product => product.modal;
 export const getDiscountCode = product => product.discountCode;
 export const getDiscountStatus = product => product.discountIsActive;
+export const getMenuState = product => product.menuIsOpen;
 
 // REDUCER 
 
@@ -110,6 +113,12 @@ export default function productReducer(state = initialState, action = {}) {
 
       return {
         ...state, modal: false
+      }
+    case TOGGLE_MENU:
+      const menuState = !state.menuIsOpen;
+
+      return {
+        ...state, menuIsOpen: menuState
       }
 
     default:

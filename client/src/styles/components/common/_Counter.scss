@@ -1,17 +1,31 @@
 .Counter {
     @include flex(flex-start, flex-end, column);
+    align-self: flex-end;
 
     .CountSection {
         @include flex(flex-start, center, row);
 
         span {
             cursor: pointer;
+            font-size: 30px;
         }
     }
 
     p {
-        margin: 0;
+        margin: 15px;
         cursor: pointer;
         font-size: 12px;
     }
+}
+
+@media (min-width: 768px) {
+
+    .Counter {
+        align-self: center;
+
+        p {
+            margin: 0;
+        }
+    }
+
 }

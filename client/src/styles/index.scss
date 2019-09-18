@@ -9,7 +9,6 @@
 @import './common/global';
 
 @import './components/layout/MainLayout';
-@import './components/layout/MenuList';
 @import './components/layout/PageContainer';
 
 @import './components/pages/HomePage';
@@ -24,6 +23,10 @@
 @import './components/features/Footer';
 @import './components/features/SingleProduct';
 @import './components/features/Sort';
+@import './components/features/SingleProductInCart';
+@import './components/features/FooterMenuList';
+@import './components/features/ProductsList';
+@import './components/features/MenuList';
 
 @import './components/common/CartIcon';
 @import './components/common/Counter';

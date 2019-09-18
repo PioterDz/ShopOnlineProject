@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const MenuList = () => (
+const FooterMenuList = () => (
 
-    <ul className="MenuList">
+    <ul className="MenuList FooterMenuList">
         <li><NavLink to="/home" className="navlink" activeClassName="active">Home</NavLink></li>
         <li><NavLink to="/faq" className="navlink" activeClassName="active">Faq</NavLink></li>
         <li><NavLink to="/rules" className="navlink" activeClassName="active">Regulamin</NavLink></li>
@@ -12,4 +12,4 @@ const MenuList = () => (
 
 );
 
-export default MenuList;
+export default FooterMenuList;

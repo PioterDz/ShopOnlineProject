@@ -14,7 +14,7 @@ class ProductsList extends React.Component {
         const arrayOfProducts = products.filter((elem, id) => (id >= displayPerPage * (currentPage - 1)) && (id <= (displayPerPage * currentPage) - 1));
         
         return (
-            <div className="ProductsList col-8 d-flex align-items-center justify-content-center">
+            <div className="ProductsList col-md-8">
                 <div className="row">
 
                         {arrayOfProducts.map(el =>

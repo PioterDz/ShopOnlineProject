@@ -7,6 +7,7 @@ const initialState = {
     discountCode: 'COZABZDURA',
     discount: 1,
     discountIsActive: false,
+    menuIsOpen: false,
     data: [
         {
           id: '101',

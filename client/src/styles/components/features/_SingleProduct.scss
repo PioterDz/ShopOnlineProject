@@ -3,8 +3,21 @@
     height: 100%;
     @include frame-model($background-transparent, 20px);
 
+    &:hover {
+        @extend %popup-animation;
+        background-color: $light-dark;
+    }
+
     .hidden-text {
         height: 24px;
+    }
+
+    p {
+        color: $primary;
+    }
+    
+    .numbers {
+        color: $third;
     }
 
     img {
