@@ -13,7 +13,7 @@ const SingleProductInCart = (props) => {
     const newContent = product.desc.substr(0, lastIndex) + '...';
 
     return (
-        <div className="SingleProductInCart bg-light my-4">
+        <div className="SingleProductInCart bg-transparent my-4">
 
             <Link to={'productpage/' + product.id}>
                 <img alt="product" className="col-7" src={`./images/${product.img}`} />

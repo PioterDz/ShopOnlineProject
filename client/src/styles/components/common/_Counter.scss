@@ -3,7 +3,6 @@
 
     .CountSection {
         @include flex(flex-start, center, row);
-        margin-bottom: 10px;
 
         span {
             cursor: pointer;

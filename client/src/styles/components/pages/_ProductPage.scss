@@ -1,10 +1,10 @@
 .ProductPage {
     @include flex(center, center, row);
-    @extend %pagepadding;
 
     .ProductInfo {
         margin-left: 10%;
-
+        @include frame-model($background-transparent, 40px);
+        
         .addToCartBtn {
             background-color: $third;
             color: $primary;

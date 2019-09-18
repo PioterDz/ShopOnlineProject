@@ -8,7 +8,7 @@ const SingleProduct = (props) => {
     const { product } = props;
 
     return (
-        <div className="SingleProduct col-5 bg-light">
+        <div className="SingleProduct col-5">
             <Link to={'productpage/' + product.id}>
                 { product.productState ? <p className="text-danger"> { product.productState } </p> : <p className="hidden-text"></p> }
                 <img alt="product" src={`./images/${product.img}`} />

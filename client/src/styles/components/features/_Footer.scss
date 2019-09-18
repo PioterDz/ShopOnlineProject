@@ -1,8 +1,8 @@
 footer {
     @include flex(space-between, flex-start, row);
     margin-top: 15%;
-    background-color: $secondary;
     padding: 20px 0;
+    flex-shrink: 0;
 
     p {
         color: $primary;

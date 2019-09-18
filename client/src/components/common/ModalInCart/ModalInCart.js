@@ -52,7 +52,7 @@ class ModalInCart extends React.Component {
 
     return (
       <div className="Modal">
-        <Button outline color="secondary" className={discountStatus ? 'd-none' : 'd-block'} onClick={this.toggleModal}>{buttonLabel}</Button>
+        <Button outline color="secondary" className={"mt-4 " + (discountStatus ? 'd-none' : 'd-block')} onClick={this.toggleModal}>{buttonLabel}</Button>
         <Modal isOpen={modal} toggle={this.toggleModal} modalTransition={{ timeout: 500 }} backdropTransition={{ timeout: 500 }}>
           <ModalHeader toggle={this.toggleModal}>Kod rabatowy</ModalHeader>
           <ModalBody className="ModalBody">

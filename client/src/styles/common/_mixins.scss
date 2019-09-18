@@ -10,12 +10,18 @@
     height: $height;
 }
 
+@mixin frame-model($color, $padding) {
+    background-color: $color;
+    padding: $padding;
+    border-radius: 10px;
+}
+
 %onhover {
     transition: 0.4s ease-in;
 }
 
 %pagepadding {
-    padding: 0 30px;
+    margin: 0 30px;
 }
 
 %onhoverlist {

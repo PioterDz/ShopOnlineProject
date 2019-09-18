@@ -1,6 +1,6 @@
 .ContactPage {
     @include flex(flex-start, center, column);
-    @extend %pagepadding;
+    @include frame-model($background-transparent, 40px);
 
     .inContactIcon {
         color: $third;

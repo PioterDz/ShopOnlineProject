@@ -62,8 +62,8 @@ class CartPage extends React.Component {
                         discountCode={discountCode}
                         handleDiscountCode={this.handleDiscount}
                     />
-                    <Button color="success" className={discountStatus ? 'd-block' : 'd-none'}>rabat aktywny</Button>
-                    <h5 className="numbers">Total: $ {price}</h5>
+                    <Button color="success" className={"mt-4 " + (discountStatus ? 'd-block' : 'd-none')}>rabat aktywny</Button>
+                    <h5 className="totalPrice numbers">Total: $ {price}</h5>
                 </div>
                 <button className="btn btn-dark btn-lg">Zapłać</button>
                 

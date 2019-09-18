@@ -1,6 +1,6 @@
 .ErrorPage {
     @include flex(center, center, row);
-    @extend %pagepadding;
+    @include frame-model($background-transparent, 40px);
 
     .Text404 {
         @include flex(flex-start, center, column);
