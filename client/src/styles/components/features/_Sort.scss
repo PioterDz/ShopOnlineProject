@@ -6,15 +6,21 @@
         color: $primary;
     }
 
-    &::after {
-        content: '';
-        width: 200px;
-        height: 1px;
-        position: absolute;
-        background-color: $dark;
-    }
-
     .SortBy {
         @include onhoverlist($light-dark, $dark);
+    }
+}
+
+@media (min-width: 576px) {
+
+    .Sort {
+
+        &::after {
+            content: '';
+            width: 200px;
+            height: 1px;
+            position: absolute;
+            background-color: $dark;
+        }
     }
 }

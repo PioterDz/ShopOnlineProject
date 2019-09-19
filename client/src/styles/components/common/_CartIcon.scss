@@ -24,5 +24,9 @@
             font-size: 13px;
             color: $primary;
         }
+
+        .changePosition {
+            transform: translate(100%, 25%);
+        }
     }
 }

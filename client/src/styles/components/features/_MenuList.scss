@@ -21,6 +21,23 @@
     }
 }
 
+.dropDown {
+    animation: dropDown 0.5s ease-out;
+}
+
+.dropDown-d1 {
+    animation: dropDown 0.75s ease-out;
+}
+
+.dropDown-d2 {
+    animation: dropDown 1s ease-out;
+}
+
+.dropDown-d3 {
+    animation: dropDown 1.25s ease-out;
+}
+
+
 .MenuOpen {
     @include flex(flex-start, flex-start, column);
     position: absolute;

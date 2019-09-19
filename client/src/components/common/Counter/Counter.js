@@ -23,7 +23,7 @@ class Counter extends React.Component {
         const { product } = this.props;
 
         return (
-            <div className="Counter col-md-2">
+            <div className="Counter col-md-2 mt-3 mt-sm-0">
                 <div className="CountSection">
                     <span onClick={this.minusOne} className="btn-light bg-transparent mr-2">-</span>
                     <h3 className="mb-2 mx-2">{ product.countNumber }</h3>

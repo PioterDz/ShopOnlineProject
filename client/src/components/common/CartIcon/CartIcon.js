@@ -11,7 +11,7 @@ const CartIcon = (props) => {
                 {props.numberOfProducts > 0 ? 
                 <div className="BagCircle">
                     <FontAwesomeIcon className="CircleIcon" icon={['far', 'circle']} />
-                    <p className="numbers">{props.numberOfProducts}</p>
+                    <p className={props.numberOfProducts >= 10 ? "numbers changePosition" : "numbers"}>{props.numberOfProducts}</p>
                 </div> : ''}
             </div>
         );

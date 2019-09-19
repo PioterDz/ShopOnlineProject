@@ -8,10 +8,10 @@ const MenuList = (props) => {
     
     return (
         <ul className={"MenuList d-lg-flex " + (menuIsOpen ? "MenuOpen" : "d-none")}>
-            <li className={menuIsOpen ? "listMargin" : ""}><NavLink to="/home" className="navlink" activeClassName="active">Home</NavLink></li>
-            <li className={menuIsOpen ? "listMargin" : ""}><NavLink to="/faq" className="navlink" activeClassName="active">Faq</NavLink></li>
-            <li className={menuIsOpen ? "listMargin" : ""}><NavLink to="/rules" className="navlink" activeClassName="active">Regulamin</NavLink></li>
-            <li className={menuIsOpen ? "listMargin" : ""}><NavLink to="/contact" className="navlink" activeClassName="active">Kontakt</NavLink></li>
+            <li className={menuIsOpen ? "listMargin dropDown" : ""}><NavLink to="/home" className="navlink" activeClassName="active">Home</NavLink></li>
+            <li className={menuIsOpen ? "listMargin dropDown-d1" : ""}><NavLink to="/faq" className="navlink" activeClassName="active">Faq</NavLink></li>
+            <li className={menuIsOpen ? "listMargin dropDown-d2" : ""}><NavLink to="/rules" className="navlink" activeClassName="active">Regulamin</NavLink></li>
+            <li className={menuIsOpen ? "listMargin dropDown-d3" : ""}><NavLink to="/contact" className="navlink" activeClassName="active">Kontakt</NavLink></li>
         </ul>
     );
 }

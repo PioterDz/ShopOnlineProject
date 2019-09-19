@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { PropTypes } from 'prop-types';
+
+import DropDown from '../../common/DropDown/DropDown';
 
 class Sort extends React.Component {
 
@@ -34,12 +35,20 @@ class Sort extends React.Component {
         const { sortDirection } = this.props;
 
         return (
-            <div className="Sort col-md-4">
-                <h4>Sortuj</h4>
-                <p className={"SortBy " + (sortDirection === 'AtoZ' ? 'active' : '')} onClick={this.alphabetSort}>Nazwa A-Z</p>
-                <p className={"SortBy " + (sortDirection === 'ZtoA' ? 'active' : '')} onClick={this.reverseAlphabetSort}>Nazwa Z-A</p>
-                <p className={"SortBy " + (sortDirection === 'asc' ? 'active' : '')} onClick={this.priceSort}>Cena rosnąco</p>
-                <p className={"SortBy " + (sortDirection === 'desc' ? 'active' : '')} onClick={this.reversePriceSort}>Cena malejąco</p>
+            <div className="Sort col-sm-4">
+                <div className="d-none d-sm-block">
+                    <h4>Sortuj</h4>
+                    <p className={"SortBy " + (sortDirection === 'AtoZ' ? 'active' : '')} onClick={this.alphabetSort}>Nazwa A-Z</p>
+                    <p className={"SortBy " + (sortDirection === 'ZtoA' ? 'active' : '')} onClick={this.reverseAlphabetSort}>Nazwa Z-A</p>
+                    <p className={"SortBy " + (sortDirection === 'asc' ? 'active' : '')} onClick={this.priceSort}>Cena rosnąco</p>
+                    <p className={"SortBy " + (sortDirection === 'desc' ? 'active' : '')} onClick={this.reversePriceSort}>Cena malejąco</p>
+                </div>
+                <DropDown  
+                    alphabetSort={this.alphabetSort} 
+                    reverseAlphabetSort={this.reverseAlphabetSort}
+                    priceSort={this.priceSort}
+                    reversePriceSort={this.reversePriceSort} 
+                />
             </div>
         );
     }
