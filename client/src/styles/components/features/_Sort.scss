@@ -15,6 +15,6 @@
     }
 
     .SortBy {
-        @extend %onhoverlist;
+        @include onhoverlist($light-dark, $dark);
     }
 }

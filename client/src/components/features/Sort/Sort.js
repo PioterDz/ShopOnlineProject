@@ -5,50 +5,49 @@ import { PropTypes } from 'prop-types';
 class Sort extends React.Component {
 
     alphabetSort = () => {
-        const { products, handleSort } = this.props;
+        const { handleSort } = this.props;
 
-        const sortedProducts = products.sort((a, b) => (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1);
-        handleSort(sortedProducts);
+        handleSort('AtoZ');
     }
 
     reverseAlphabetSort = () => {
-        const { products, handleSort } = this.props;
+        const { handleSort } = this.props;
 
-        const sortedProducts = products.sort((a, b) => (a.name.toUpperCase() < b.name.toUpperCase()) ? 1 : -1);
-        handleSort(sortedProducts);
+        handleSort('ZtoA');
     }
 
     priceSort = () => {
-        const { products, handleSort } = this.props;
+        const { handleSort } = this.props;
         
-        const sortedProducts = products.sort((a, b) => a.price - b.price);
-        handleSort(sortedProducts);
+        handleSort('asc');
     }
 
     reversePriceSort = () => {
-        const { products, handleSort } = this.props;
+        const { handleSort } = this.props;
 
-        const sortedProducts = products.sort((a, b) => b.price - a.price);
-        handleSort(sortedProducts);
+        handleSort('desc');
     }
 
 
     render() {
+
+        const { sortDirection } = this.props;
+
         return (
             <div className="Sort col-md-4">
                 <h4>Sortuj</h4>
-                <p className="SortBy" onClick={this.alphabetSort}>Nazwa A-Z</p>
-                <p className="SortBy" onClick={this.reverseAlphabetSort}>Nazwa Z-A</p>
-                <p className="SortBy" onClick={this.priceSort}>Cena rosnąco</p>
-                <p className="SortBy" onClick={this.reversePriceSort}>Cena malejąco</p>
+                <p className={"SortBy " + (sortDirection === 'AtoZ' ? 'active' : '')} onClick={this.alphabetSort}>Nazwa A-Z</p>
+                <p className={"SortBy " + (sortDirection === 'ZtoA' ? 'active' : '')} onClick={this.reverseAlphabetSort}>Nazwa Z-A</p>
+                <p className={"SortBy " + (sortDirection === 'asc' ? 'active' : '')} onClick={this.priceSort}>Cena rosnąco</p>
+                <p className={"SortBy " + (sortDirection === 'desc' ? 'active' : '')} onClick={this.reversePriceSort}>Cena malejąco</p>
             </div>
         );
     }
 }
 
 Sort.propTypes = {
-    products: PropTypes.array.isRequired,
     handleSort: PropTypes.func.isRequired,
+    sortDirection: PropTypes.string.isRequired
 }
 
 export default Sort;

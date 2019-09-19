@@ -9,11 +9,11 @@ const ModalHomePage = (props) => {
   return (
     <div>
       <Modal isOpen={modal} toggle={closeModal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 700 }}>
-        <ModalHeader toggle={closeModal}>TYLKO DZISIAJ!</ModalHeader>
-        <ModalBody>
+        <ModalHeader className="ModalHeader" toggle={closeModal}>TYLKO DZISIAJ!</ModalHeader>
+        <ModalBody className="ModalBody">
           {content}
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter className="ModalFooter">
           <Button color="success" onClick={closeModal}>OK!</Button>
         </ModalFooter>
       </Modal>

@@ -15,10 +15,10 @@ class HomePage extends React.Component {
         pageChange(pageChoosed);
     }
 
-    onSort = (sortedData) => {
-        const { sort } = this.props;
+    onSort = (key) => {
+        const { sortBy } = this.props;
 
-        sort(sortedData);
+        sortBy(key);
     }
 
     closeModal = () => {
@@ -28,13 +28,13 @@ class HomePage extends React.Component {
     }
 
     render() {
-        const { products, page, displayPerPage, numberOfPages, modal } = this.props;
+        const { products, page, displayPerPage, numberOfPages, modal, sortDirection } = this.props;
         
         return (
             <div className="HomePage row page">
-                <Sort 
-                    products={products}
+                <Sort
                     handleSort={this.onSort}
+                    sortDirection={sortDirection}
                 />
                 <ProductsList 
                     products={products}
@@ -58,13 +58,14 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
     pageChange: PropTypes.func.isRequired,
-    sort: PropTypes.func.isRequired,
     products: PropTypes.array.isRequired,
     page: PropTypes.number.isRequired,
     displayPerPage: PropTypes.number.isRequired,
     numberOfPages: PropTypes.number.isRequired,
     modal: PropTypes.bool.isRequired,
-    changeModal: PropTypes.func.isRequired
+    changeModal: PropTypes.func.isRequired,
+    sortBy: PropTypes.func.isRequired,
+    sortDirection: PropTypes.string.isRequired
 }
     
 export default HomePage;

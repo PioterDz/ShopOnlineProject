@@ -2,10 +2,9 @@ import React from 'react';
 import uuid from 'uuidv4';
 import { PropTypes } from 'prop-types';
 
-import { Button } from 'reactstrap';
-
 import SingleProductInCart from '../../features/SingleProductInCart/SingleProductInCart';
 import ModalInCart from '../../common/ModalInCart/ModalInCart';
+import DiscountButton from '../../common/DiscountButton/DiscountButton';
 
 class CartPage extends React.Component {
 
@@ -34,9 +33,14 @@ class CartPage extends React.Component {
         calculatePrice();
     }
 
-    render() {
-        const { cart, price, discountCode, discountStatus } = this.props;
+    openInput = () => {
+        const { openInput } = this.props;
 
+        openInput();
+    }
+
+    render() {
+        const { cart, price, discountCode, discountStatus, discountInputStatus } = this.props;
 
         return (
 
@@ -55,14 +59,15 @@ class CartPage extends React.Component {
                         />) : <h1>Brak produktów w koszyku</h1> }
                 </div>
                 <div className="CartSummary">
-                    <ModalInCart 
+                    <DiscountButton discountStatus={discountStatus} inputStatus={discountInputStatus} openInput={this.openInput} discountCode={discountCode} handleDiscountCode={this.handleDiscount} />
+                    {/* <ModalInCart 
                         toggleModal={this.handleToggleModal} 
                         buttonLabel={'kod rabatowy'}
                         discountStatus={discountStatus}
                         discountCode={discountCode}
                         handleDiscountCode={this.handleDiscount}
-                    />
-                    <Button color="success" className={"mt-4 " + (discountStatus ? 'd-block' : 'd-none')}>rabat aktywny</Button>
+                    /> */}
+                    
                     <h5 className="totalPrice numbers">Total: $ {price}</h5>
                 </div>
                 <button className="btn btn-dark btn-lg">Zapłać</button>
@@ -82,6 +87,8 @@ CartPage.propTypes = {
     makeDiscount: PropTypes.func.isRequired,
     discountStatus: PropTypes.bool.isRequired,
     calculatePrice: PropTypes.func.isRequired,
+    discountInputStatus: PropTypes.bool.isRequired,
+    openInput: PropTypes.func.isRequired
 }
     
 export default CartPage;

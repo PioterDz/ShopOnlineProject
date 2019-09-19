@@ -1,0 +1,5 @@
+.DiscountInput {
+    @include frame-model($background-transparent, 15px);
+    color: $primary;
+    border: none;
+}

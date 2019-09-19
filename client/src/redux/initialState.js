@@ -8,6 +8,8 @@ const initialState = {
     discount: 1,
     discountIsActive: false,
     menuIsOpen: false,
+    sortDirection: '',
+    discountInput: false,
     data: [
         {
           id: '101',
