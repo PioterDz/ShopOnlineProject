@@ -1,4 +1,5 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const DropDown = (props) => {
@@ -19,5 +20,13 @@ const DropDown = (props) => {
         </UncontrolledDropdown>
     );
 }
+
+DropDown.propTypes = {
+    alphabetSort: PropTypes.func.isRequired,
+    reverseAlphabetSort: PropTypes.func.isRequired,
+    priceSort: PropTypes.func.isRequired,
+    reversePriceSort: PropTypes.func.isRequired
+}
+
 
 export default DropDown;

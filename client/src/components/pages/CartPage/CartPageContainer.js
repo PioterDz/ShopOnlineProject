@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getCart, getTotalPrice, plusToCounter, minusToCounter, deleteFromCart, getDiscountCode, makeDiscount, getDiscountStatus, 
-    calculatePrice, getDiscountInputStatus, openDiscountInput } from '../../../redux/productRedux/productReducer'
+    calculatePrice, getDiscountInputStatus, openDiscountInput, toggleSwitch } from '../../../redux/productRedux/productReducer'
 
 import CartPage from './CartPage';
 
@@ -18,7 +18,8 @@ const mapDispatchToProps = dispatch => ({
     deleteFromCart: (id) => dispatch(deleteFromCart(id)),
     makeDiscount: () => dispatch(makeDiscount()),
     calculatePrice: () => dispatch(calculatePrice()),
-    openInput: () => dispatch(openDiscountInput())
+    openInput: () => dispatch(openDiscountInput()),
+    toggleSwitch: (id) => dispatch(toggleSwitch(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage);

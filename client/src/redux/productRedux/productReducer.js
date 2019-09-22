@@ -14,6 +14,7 @@ export const CALCULATE_PRICE = 'CALCULATE_PRICE';
 export const CHANGE_MODAL_STATE = 'CHANGE_MODAL_STATE';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const OPEN_DISCOUNT_INPUT = 'OPEN_DISCOUNT_INPUT';
+export const TOGGLE_SWITCH = 'TOGGLE_SWITCH'
 
 
 
@@ -28,6 +29,7 @@ export const calculatePrice = () => ({ type: CALCULATE_PRICE });
 export const changeModalState = () => ({ type: CHANGE_MODAL_STATE });
 export const toggleMenu = () => ({ type: TOGGLE_MENU });
 export const openDiscountInput = () => ({ type: OPEN_DISCOUNT_INPUT });
+export const toggleSwitch = id => ({ id, type: TOGGLE_SWITCH });
 
 // SELECTORS
 
@@ -99,7 +101,7 @@ export default function productReducer(state = initialState, action = {}) {
 
       let roundPrice;
       if(state.cart.length !== 0) {
-        const allPrices = state.cart.map(el => el.price * el.countNumber);
+        const allPrices = state.cart.map(el => el.food ? el.price * el.countNumber * 1.1 : el.price * el.countNumber);
         const sumPrices = state.discountIsActive ? allPrices.reduce((prev, curr) => prev + curr) * state.discount : allPrices.reduce((prev, curr) => prev + curr);
         roundPrice = parseFloat(sumPrices.toFixed(2));
       } else {
@@ -139,7 +141,15 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, discountInput: true
       }
+    case TOGGLE_SWITCH:
+      const findProduct = state.data.find(el => el.id === action.id);
+      findProduct.food = !findProduct.food;
 
+      const newDataArr = state.data.map(el => el.id === action.id ? findProduct : el);
+
+      return {
+        ...state, data: newDataArr
+      }
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import { Badge } from 'reactstrap';
 
 
 const SingleProduct = (props) => {
@@ -10,7 +11,7 @@ const SingleProduct = (props) => {
     return (
         <div className="SingleProduct col-sm-5">
             <Link to={'productpage/' + product.id}>
-                { product.productState ? <p className="text-danger"> { product.productState } </p> : <p className="hidden-text"></p> }
+                { product.productState ? <Badge color="info"> { product.productState } </Badge> : <p className="hidden-text"></p> }
                 <img alt="product" src={`./images/${product.img}`} />
                 <p>{ product.name }</p>
                 <p className="numbers">{ product.price } $</p>

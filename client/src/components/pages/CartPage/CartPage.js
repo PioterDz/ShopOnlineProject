@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'uuidv4';
 import { PropTypes } from 'prop-types';
+import AnimateOnChange from 'react-animate-on-change';
 
 import SingleProductInCart from '../../features/SingleProductInCart/SingleProductInCart';
 import DiscountButton from '../../common/DiscountButton/DiscountButton';
@@ -38,6 +39,12 @@ class CartPage extends React.Component {
         openInput();
     }
 
+    makeToggleSwitch = (id) => {
+        const { toggleSwitch } = this.props;
+
+        toggleSwitch(id);
+    }
+
     render() {
         const { cart, price, discountCode, discountStatus, discountInputStatus } = this.props;
 
@@ -55,6 +62,7 @@ class CartPage extends React.Component {
                             addToCounter={this.plusCounter}
                             handleDeleteProduct={this.handleDeleteProduct}
                             product={el}
+                            toggleSwitch={this.makeToggleSwitch}
                         />) : <h1>Brak produktów w koszyku</h1> }
                 </div>
                 <div className="CartSummary">
@@ -65,8 +73,13 @@ class CartPage extends React.Component {
                         discountCode={discountCode} 
                         handleDiscountCode={this.handleDiscount} 
                     />
-                    
-                    <h5 className="totalPrice numbers">Total: $ {price}</h5>
+                    <AnimateOnChange 
+                        baseClassName="totalPrice"
+                        animationClassName="price-popup"
+                        animate={price}
+                    >
+                        <h5 className="numbers">Total: $ {price}</h5>
+                    </AnimateOnChange>
                 </div>
                 <button className="btn btn-dark btn-lg payBtn">Zapłać</button>
                 
@@ -86,7 +99,8 @@ CartPage.propTypes = {
     discountStatus: PropTypes.bool.isRequired,
     calculatePrice: PropTypes.func.isRequired,
     discountInputStatus: PropTypes.bool.isRequired,
-    openInput: PropTypes.func.isRequired
+    openInput: PropTypes.func.isRequired,
+    toggleSwitch: PropTypes.func.isRequired
 }
     
 export default CartPage;

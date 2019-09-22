@@ -8572,6 +8572,11 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-animate-on-change@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-animate-on-change/-/react-animate-on-change-2.2.0.tgz#862d3d5a66d09d6b5c32308acdcd587c1bee47a4"
+  integrity sha512-cM0YHbsxIh8fshX/U24+pk4nDG7Ike9NsEy21reqJPqVt6xRA+6oYkaQHEggINKjYEMbztwK40Ro0/EHZ5naVQ==
+
 react-app-polyfill@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-1.0.2.tgz#2a51175885c88245a2a356dc46df29f38ec9f060"
@@ -8931,6 +8936,11 @@ redent@^1.0.0:
   dependencies:
     indent-string "^2.1.0"
     strip-indent "^1.0.1"
+
+redux-thunk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+  integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
 redux@4.0.1:
   version "4.0.1"

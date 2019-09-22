@@ -29,6 +29,10 @@
             margin: 15px 0;
             align-self: flex-end;
         }
+
+        .price-popup {
+            animation: popup 0.7s;
+        }
     }
 
     .payBtn {
