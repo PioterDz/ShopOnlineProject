@@ -329,7 +329,6 @@ const data = [
       countNumber: 0,
       food: false
     },
-
 ]
 
 module.exports = data;

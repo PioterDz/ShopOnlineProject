@@ -1,20 +1,24 @@
-import { createStore, /*combineReducers*/ } from 'redux';
-import { saveState, loadState } from './localStorage';
-import productReducer from './productRedux/productReducer';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 
-// combine reducers
+import { saveState, loadState } from './localSession';
+import productReducer from './productRedux/productReducer';
+// import thunkReducer from './productRedux/thunkReducer';
+
 // const rootReducer = combineReducers({
 //     productReducer,
+//     thunkReducer
 // });
 
 const persistedStore = loadState();
-console.log(persistedStore, 'persistedstore');
 
-const store = createStore(productReducer, persistedStore, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(productReducer, persistedStore, compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+));
 
 
 store.subscribe(() => {
-    console.log(store.getState(), 'getstate');
     saveState(store.getState());
 });
 

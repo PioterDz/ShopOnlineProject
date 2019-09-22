@@ -1,5 +1,7 @@
 .PageContainer {
     background-image: url('../../../styles/main.jpg');
     flex: 1 0 auto;
+    @include flex(space-between, auto, column);
     max-height: 4000px;
+    min-height: 100vh;
 }

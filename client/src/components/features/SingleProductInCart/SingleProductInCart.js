@@ -6,7 +6,7 @@ import Counter from '../../common/Counter/Counter';
 
 const SingleProductInCart = (props) => {
 
-    const { product, substractFromCounter, addToCounter, handleDeleteProduct, toggleSwitch } = props;
+    const { product, substractFromCounter, addToCounter, handleDeleteProduct } = props;
 
     const arr = product.desc.split('');
     const lastIndex = arr.lastIndexOf(' ', 130);
@@ -26,7 +26,7 @@ const SingleProductInCart = (props) => {
 
             <p className="col-md-2 numbers">$ { product.price }</p>
 
-            <Counter toggleSwitch={toggleSwitch} product={product} substractFromCounter={substractFromCounter} addToCounter={addToCounter} deleteProduct={handleDeleteProduct} />
+            <Counter product={product} substractFromCounter={substractFromCounter} addToCounter={addToCounter} deleteProduct={handleDeleteProduct} />
 
         </div>
     );

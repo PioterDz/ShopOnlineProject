@@ -1,7 +1,15 @@
 import initialState from '../initialState';
-
+import axios from 'axios';
+import { API_URL } from '../config';
 
 // ACTIONS 
+
+export const LOAD_DATA = 'LOAD_DATA';
+export const START_REQUEST = 'START_REQUEST';
+export const END_REQUEST = 'END_REQUEST';
+export const ERROR_REQUEST = 'ERROR_REQUEST';
+export const RESET_REQUEST = 'RESET_REQUEST';
+export const LOAD_SINGLE_PRODUCT = 'LOAD_SINGLE_PRODUCT';
 
 export const PLUS_TO_COUNTER = 'PLUS_TO_COUNTER';
 export const MINUS_TO_COUNTER = 'MINUS_TO_COUNTER';
@@ -14,9 +22,14 @@ export const CALCULATE_PRICE = 'CALCULATE_PRICE';
 export const CHANGE_MODAL_STATE = 'CHANGE_MODAL_STATE';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const OPEN_DISCOUNT_INPUT = 'OPEN_DISCOUNT_INPUT';
-export const TOGGLE_SWITCH = 'TOGGLE_SWITCH'
 
 
+export const loadData = payload => ({ payload, type: LOAD_DATA });
+export const startRequest = () => ({ type: START_REQUEST });
+export const endRequest = () => ({ type: END_REQUEST });
+export const errorRequest = error => ({ error, type: ERROR_REQUEST });
+export const resetRequest = () => ({ type: RESET_REQUEST });
+export const loadSingleProduct = payload => ({ payload, type: LOAD_SINGLE_PRODUCT });
 
 export const plusToCounter = id => ({ id, type: PLUS_TO_COUNTER });
 export const minusToCounter = id => ({ id, type: MINUS_TO_COUNTER });
@@ -29,7 +42,6 @@ export const calculatePrice = () => ({ type: CALCULATE_PRICE });
 export const changeModalState = () => ({ type: CHANGE_MODAL_STATE });
 export const toggleMenu = () => ({ type: TOGGLE_MENU });
 export const openDiscountInput = () => ({ type: OPEN_DISCOUNT_INPUT });
-export const toggleSwitch = id => ({ id, type: TOGGLE_SWITCH });
 
 // SELECTORS
 
@@ -45,12 +57,57 @@ export const getDiscountStatus = product => product.discountIsActive;
 export const getMenuState = product => product.menuIsOpen;
 export const getSortDirection = product => product.sortDirection;
 export const getDiscountInputStatus = product => product.discountInput;
+export const getRequest = product => product.request;
+
+
+// THUNK
+
+export const loadDataRequest = () => {
+  return async dispatch => {
+
+    dispatch(startRequest());
+    try {
+
+      let res = await axios.get(`${API_URL}/data`);
+      await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+      dispatch(loadData(res.data));
+      dispatch(endRequest());
+
+    } catch(e) {
+      dispatch(errorRequest(e.message));
+    }
+
+  };
+};
+
+
+
 
 // REDUCER 
 
 
 export default function productReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case LOAD_DATA:
+
+      return { ...state, data: action.payload };
+    case START_REQUEST:
+
+      return { ...state, data: [], singlePost: {}, request: { pending: true, error: null, success: null } };
+    case END_REQUEST:
+
+      return { ...state, request: { pending: false, error: null, success: true } };
+    case ERROR_REQUEST:
+
+      return { ...state, request: { pending: false, error: action.error, success: false } };
+    case LOAD_SINGLE_PRODUCT:
+
+      return { ...state, singleProduct: action.payload };
+    case RESET_REQUEST:
+      
+      return {...state, request: { pending: false, error: null, success: null } };
+
+
     case ADD_TO_CART:
 
       const productToAdd = action.payload;
@@ -141,15 +198,7 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, discountInput: true
       }
-    case TOGGLE_SWITCH:
-      const findProduct = state.data.find(el => el.id === action.id);
-      findProduct.food = !findProduct.food;
-
-      const newDataArr = state.data.map(el => el.id === action.id ? findProduct : el);
-
-      return {
-        ...state, data: newDataArr
-      }
+    
     default:
       return state;
   }

@@ -1,8 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-import Switch from '../Switch/Switch';
-
 class Counter extends React.Component {
 
     deleteProduct = () => {
@@ -20,15 +18,9 @@ class Counter extends React.Component {
         addToCounter(product.id);
     }
 
-    handleToggleSwitch = () => {
-        const { product, toggleSwitch } = this.props;
-
-        toggleSwitch(product.id);
-    }
-
     render() {
 
-        const { product, toggleSwitch } = this.props;
+        const { product } = this.props;
 
         return (
             <div className="Counter col-md-2 mt-3 mt-sm-0">
@@ -38,7 +30,6 @@ class Counter extends React.Component {
                     <span onClick={this.plusOne} className="btn-light bg-transparent mx-2">+</span>
                     <p className="ml-2">osoby</p>
                 </div>
-                <Switch product={product} toggleSwitch={toggleSwitch} label='opcja z wyżywieniem' />
                 <p className="text-danger" onClick={this.deleteProduct}>usuń produkt</p>
             </div>
         );
@@ -51,7 +42,6 @@ Counter.propTypes = {
     addToCounter: PropTypes.func.isRequired,
     substractFromCounter: PropTypes.func.isRequired,
     deleteProduct: PropTypes.func.isRequired,
-    toggleSwitch: PropTypes.func.isRequired
 };
 
 export default Counter;
