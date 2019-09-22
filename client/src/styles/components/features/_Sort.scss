@@ -2,15 +2,25 @@
     height: 100%;
     margin: 15px 0;
 
-    &::after {
-        content: '';
-        width: 200px;
-        height: 1px;
-        position: absolute;
-        background-color: $dark;
+    h4 {
+        color: $primary;
     }
 
     .SortBy {
-        @extend %onhoverlist;
+        @include onhoverlist($light-dark, $dark);
+    }
+}
+
+@media (min-width: 576px) {
+
+    .Sort {
+
+        &::after {
+            content: '';
+            width: 200px;
+            height: 1px;
+            position: absolute;
+            background-color: $dark;
+        }
     }
 }

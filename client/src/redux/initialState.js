@@ -7,6 +7,9 @@ const initialState = {
     discountCode: 'COZABZDURA',
     discount: 1,
     discountIsActive: false,
+    menuIsOpen: false,
+    sortDirection: '',
+    discountInput: false,
     data: [
         {
           id: '101',
@@ -15,7 +18,8 @@ const initialState = {
           price: 65.99,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: 'nowość',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '102',
@@ -24,7 +28,8 @@ const initialState = {
           price: 75.87,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: 'ostatnie miejsca',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '103',
@@ -32,8 +37,9 @@ const initialState = {
           name: 'Zakynthos',
           price: 71.33,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'polecane',
+          countNumber: 0,
+          food: false
         },
         {
           id: '104',
@@ -42,7 +48,8 @@ const initialState = {
           price: 55.12,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '105',
@@ -51,7 +58,8 @@ const initialState = {
           price: 34.89,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '106',
@@ -59,8 +67,9 @@ const initialState = {
           name: 'Alanya',
           price: 79.90,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'ostatnie miejsca',
+          countNumber: 0,
+          food: false
         },
         {
             id: '107',
@@ -68,8 +77,9 @@ const initialState = {
             name: 'Casablanca',
             price: 101.89,
             desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-            productState: '',
-            countNumber: 0
+            productState: 'nowość',
+            countNumber: 0,
+            food: false
         },
         {
           id: '108',
@@ -77,8 +87,9 @@ const initialState = {
           name: 'Rjeikavik',
           price: 300.01,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'nowość',
+          countNumber: 0,
+          food: false
         },
         {
           id: '109',
@@ -86,8 +97,9 @@ const initialState = {
           name: 'Kutaisi',
           price: 39.99,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'ostatnie miejsca',
+          countNumber: 0,
+          food: false
         },
         {
           id: '110',
@@ -96,7 +108,8 @@ const initialState = {
           price: 127.77,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '111',
@@ -104,8 +117,9 @@ const initialState = {
           name: 'Malaka',
           price: 201.11,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'polecane',
+          countNumber: 0,
+          food: false
         },
         {
           id: '112',
@@ -113,8 +127,9 @@ const initialState = {
           name: 'Nairobi',
           price: 201.33,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'nowość',
+          countNumber: 0,
+          food: false
         },
         {
           id: '113',
@@ -123,7 +138,8 @@ const initialState = {
           price: 199.99,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '114',
@@ -131,8 +147,9 @@ const initialState = {
           name: 'Delhi',
           price: 125.50,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'ostatnie miejsca',
+          countNumber: 0,
+          food: false
         },
         {
           id: '115',
@@ -140,8 +157,9 @@ const initialState = {
           name: 'Phnom Penh',
           price: 87.75,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'polecane',
+          countNumber: 0,
+          food: false
         },
         {
           id: '116',
@@ -150,7 +168,8 @@ const initialState = {
           price: 77.98,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '117',
@@ -159,7 +178,8 @@ const initialState = {
           price: 54.67,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '118',
@@ -168,7 +188,8 @@ const initialState = {
           price: 330.11,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '119',
@@ -177,7 +198,8 @@ const initialState = {
           price: 290.99,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '120',
@@ -185,8 +207,9 @@ const initialState = {
           name: 'Kioto',
           price: 264.21,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'polecane',
+          countNumber: 0,
+          food: false
         },
         {
           id: '121',
@@ -195,7 +218,8 @@ const initialState = {
           price: 79.11,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '122',
@@ -203,8 +227,9 @@ const initialState = {
           name: 'Cebu',
           price: 179.13,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'nowość',
+          countNumber: 0,
+          food: false
         },
         {
           id: '123',
@@ -213,7 +238,8 @@ const initialState = {
           price: 113.88,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '124',
@@ -222,7 +248,8 @@ const initialState = {
           price: 88.88,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '125',
@@ -230,8 +257,9 @@ const initialState = {
           name: 'Ho Chi Minh',
           price: 154.78,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'polecane',
+          countNumber: 0,
+          food: false
         },
         {
           id: '126',
@@ -240,7 +268,8 @@ const initialState = {
           price: 169.25,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '127',
@@ -249,7 +278,8 @@ const initialState = {
           price: 269.33,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '128',
@@ -258,7 +288,8 @@ const initialState = {
           price: 76.99,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '129',
@@ -266,8 +297,9 @@ const initialState = {
           name: 'Mombasa',
           price: 85.02,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'nowość',
+          countNumber: 0,
+          food: false
         },
         {
           id: '130',
@@ -275,8 +307,9 @@ const initialState = {
           name: 'Cypr',
           price: 76.36,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'ostatnie miejsca',
+          countNumber: 0,
+          food: false
         },
         {
           id: '131',
@@ -285,7 +318,8 @@ const initialState = {
           price: 277.88,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
           productState: '',
-          countNumber: 0
+          countNumber: 0,
+          food: false
         },
         {
           id: '132',
@@ -293,8 +327,9 @@ const initialState = {
           name: 'Kapadocja',
           price: 102.02,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'ostatnie miejsca',
+          countNumber: 0,
+          food: false
         },
         {
           id: '133',
@@ -302,8 +337,9 @@ const initialState = {
           name: 'Seul',
           price: 235.36,
           desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in neque id dolor egestas rutrum. Vivamus ullamcorper tincidunt sapien, eu lobortis quam dictum et. Praesent faucibus aliquet consectetur. Etiam tincidunt cursus sapien sed placerat. Vestibulum purus magna, convallis quis leo ac, luctus congue arcu. Mauris volutpat est in elementum sagittis.',
-          productState: '',
-          countNumber: 0
+          productState: 'nowość',
+          countNumber: 0,
+          food: false
         },
 
     ]

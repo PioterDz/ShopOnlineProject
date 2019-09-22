@@ -1,3 +1,11 @@
+%onhover {
+    transition: 0.4s ease-in;
+}
+
+%pagepadding {
+    margin: 0 30px;
+}
+
 @mixin flex($justify, $align-it, $direction) {
     display: flex;
     justify-content: $justify;
@@ -5,7 +13,7 @@
     flex-direction: $direction;
 }
 
-@mixin square-size($width, $height) {
+@mixin block-size($width, $height) {
     width: $width;
     height: $height;
 }
@@ -16,21 +24,21 @@
     border-radius: 10px;
 }
 
-%onhover {
-    transition: 0.4s ease-in;
-}
-
-%pagepadding {
-    margin: 0 30px;
-}
-
-%onhoverlist {
+@mixin onhoverlist($firstcolor, $secondcolor) {
     @extend %onhover;
-    color: $light-dark;
+    color: $firstcolor;
     cursor: pointer;
 
     &:hover {
-        color: $dark;
+        color: $secondcolor;
     }
+}
+
+
+%popup-animation {
+    animation-name: popup;
+    animation-duration: 1s;
+    transform: scale(1.2);
+    transition: 1s ease-in;
 }
 

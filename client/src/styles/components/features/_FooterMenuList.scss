@@ -1,0 +1,20 @@
+.FooterMenuList {
+    @include flex(space-around, center, row);
+    width: 100%;
+
+    .navlink {
+        margin: 0 10px;
+    }
+}
+
+@media (min-width: 576px) {
+
+    .FooterMenuList {
+        width: 50%;
+
+        .navlink {
+            margin: 0;
+        }
+    }
+
+}

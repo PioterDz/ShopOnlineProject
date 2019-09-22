@@ -1,0 +1,11 @@
+.DiscountInput {
+    @include frame-model($background-transparent, 15px);
+    color: $primary;
+    border: none;
+}
+
+.code {
+    animation: showup 1.5s;
+    margin-top: 15px;
+}
+

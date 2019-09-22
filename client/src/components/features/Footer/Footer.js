@@ -1,11 +1,11 @@
 import React from 'react';
 
-import MenuList from '../../layout/MenuList/MenuList';
+import FooterMenuList from '../FooterMenuList/FooterMenuList';
 
 const Footer = () => (
     <footer>
         <p>All rights reserved</p>
-        <MenuList />
+        <FooterMenuList />
     </footer>
 );
 

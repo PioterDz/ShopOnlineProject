@@ -5,24 +5,31 @@ import initialState from '../initialState';
 
 export const PLUS_TO_COUNTER = 'PLUS_TO_COUNTER';
 export const MINUS_TO_COUNTER = 'MINUS_TO_COUNTER';
-export const SORT = 'SORT';
+export const SORT_BY = 'SORT_BY';
 export const PAGE_CHANGE = 'PAGE_CHANGE';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const MAKE_DISCOUNT = 'MAKE_DISCOUNT';
 export const CALCULATE_PRICE = 'CALCULATE_PRICE';
 export const CHANGE_MODAL_STATE = 'CHANGE_MODAL_STATE';
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+export const OPEN_DISCOUNT_INPUT = 'OPEN_DISCOUNT_INPUT';
+export const TOGGLE_SWITCH = 'TOGGLE_SWITCH'
+
 
 
 export const plusToCounter = id => ({ id, type: PLUS_TO_COUNTER });
 export const minusToCounter = id => ({ id, type: MINUS_TO_COUNTER });
-export const sort = payload => ({ payload, type: SORT });
+export const sortBy = key => ({ key, type: SORT_BY });
 export const pageChange = payload => ({ payload, type: PAGE_CHANGE });
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
 export const deleteFromCart = payload => ({ payload, type: DELETE_FROM_CART });
 export const makeDiscount = () => ({ type: MAKE_DISCOUNT });
 export const calculatePrice = () => ({ type: CALCULATE_PRICE });
 export const changeModalState = () => ({ type: CHANGE_MODAL_STATE });
+export const toggleMenu = () => ({ type: TOGGLE_MENU });
+export const openDiscountInput = () => ({ type: OPEN_DISCOUNT_INPUT });
+export const toggleSwitch = id => ({ id, type: TOGGLE_SWITCH });
 
 // SELECTORS
 
@@ -35,6 +42,9 @@ export const getTotalPrice = product => product.totalPrice;
 export const getModalState = product => product.modal;
 export const getDiscountCode = product => product.discountCode;
 export const getDiscountStatus = product => product.discountIsActive;
+export const getMenuState = product => product.menuIsOpen;
+export const getSortDirection = product => product.sortDirection;
+export const getDiscountInputStatus = product => product.discountInput;
 
 // REDUCER 
 
@@ -62,11 +72,6 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, page: action.payload
       } 
-    case SORT:
-
-      return {
-        ...state, data: [...action.payload]
-      };
     case PLUS_TO_COUNTER:
 
       const productToPlus = state.cart.find(el => el.id === action.id);
@@ -96,7 +101,7 @@ export default function productReducer(state = initialState, action = {}) {
 
       let roundPrice;
       if(state.cart.length !== 0) {
-        const allPrices = state.cart.map(el => el.price * el.countNumber);
+        const allPrices = state.cart.map(el => el.food ? el.price * el.countNumber * 1.1 : el.price * el.countNumber);
         const sumPrices = state.discountIsActive ? allPrices.reduce((prev, curr) => prev + curr) * state.discount : allPrices.reduce((prev, curr) => prev + curr);
         roundPrice = parseFloat(sumPrices.toFixed(2));
       } else {
@@ -111,7 +116,40 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, modal: false
       }
+    case TOGGLE_MENU:
+      const menuState = !state.menuIsOpen;
 
+      return {
+        ...state, menuIsOpen: menuState
+      }
+    
+    case SORT_BY:
+      let newData;
+      if(action.key === 'asc' || action.key === 'desc') {
+        newData = state.data.sort((a, b) => action.key === 'asc' ? parseFloat(a.price) - parseFloat(b.price) : parseFloat(b.price) - parseFloat(a.price));
+      } else if(action.key === 'AtoZ') {
+        newData = state.data.sort((a, b) => (a.name.toUpperCase() > b.name.toUpperCase()) ? 1 : -1);
+      } else if(action.key === 'ZtoA') {
+        newData = state.data.sort((a, b) => (a.name.toUpperCase() < b.name.toUpperCase()) ? 1 : -1);
+      }
+
+      return {
+        ...state, data: newData, sortDirection: action.key
+      }
+    case OPEN_DISCOUNT_INPUT:
+
+      return {
+        ...state, discountInput: true
+      }
+    case TOGGLE_SWITCH:
+      const findProduct = state.data.find(el => el.id === action.id);
+      findProduct.food = !findProduct.food;
+
+      const newDataArr = state.data.map(el => el.id === action.id ? findProduct : el);
+
+      return {
+        ...state, data: newDataArr
+      }
     default:
       return state;
   }

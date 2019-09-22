@@ -1,5 +1,5 @@
 footer {
-    @include flex(space-between, flex-start, row);
+    @include flex(space-between, center, column-reverse);
     margin-top: 15%;
     padding: 20px 0;
     flex-shrink: 0;
@@ -9,4 +9,26 @@ footer {
         text-decoration: none;
         margin: 0 0 0 30px;
     }
+}
+
+@media (min-width: 576px) {
+
+    footer {
+        @include flex(space-between, flex-start, row);
+
+        p {
+            width: 40%;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+
+    footer {
+       
+        .MenuList {
+            display: flex;
+        }
+    }
+
 }

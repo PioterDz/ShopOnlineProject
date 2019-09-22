@@ -1,11 +1,10 @@
 import React from 'react';
 import uuid from 'uuidv4';
 import { PropTypes } from 'prop-types';
-
-import { Button } from 'reactstrap';
+import AnimateOnChange from 'react-animate-on-change';
 
 import SingleProductInCart from '../../features/SingleProductInCart/SingleProductInCart';
-import ModalInCart from '../../common/ModalInCart/ModalInCart';
+import DiscountButton from '../../common/DiscountButton/DiscountButton';
 
 class CartPage extends React.Component {
 
@@ -34,9 +33,20 @@ class CartPage extends React.Component {
         calculatePrice();
     }
 
-    render() {
-        const { cart, price, discountCode, discountStatus } = this.props;
+    openInput = () => {
+        const { openInput } = this.props;
 
+        openInput();
+    }
+
+    makeToggleSwitch = (id) => {
+        const { toggleSwitch } = this.props;
+
+        toggleSwitch(id);
+    }
+
+    render() {
+        const { cart, price, discountCode, discountStatus, discountInputStatus } = this.props;
 
         return (
 
@@ -52,20 +62,26 @@ class CartPage extends React.Component {
                             addToCounter={this.plusCounter}
                             handleDeleteProduct={this.handleDeleteProduct}
                             product={el}
+                            toggleSwitch={this.makeToggleSwitch}
                         />) : <h1>Brak produktów w koszyku</h1> }
                 </div>
                 <div className="CartSummary">
-                    <ModalInCart 
-                        toggleModal={this.handleToggleModal} 
-                        buttonLabel={'kod rabatowy'}
-                        discountStatus={discountStatus}
-                        discountCode={discountCode}
-                        handleDiscountCode={this.handleDiscount}
+                    <DiscountButton 
+                        discountStatus={discountStatus} 
+                        inputStatus={discountInputStatus} 
+                        openInput={this.openInput} 
+                        discountCode={discountCode} 
+                        handleDiscountCode={this.handleDiscount} 
                     />
-                    <Button color="success" className={"mt-4 " + (discountStatus ? 'd-block' : 'd-none')}>rabat aktywny</Button>
-                    <h5 className="totalPrice numbers">Total: $ {price}</h5>
+                    <AnimateOnChange 
+                        baseClassName="totalPrice"
+                        animationClassName="price-popup"
+                        animate={price}
+                    >
+                        <h5 className="numbers">Total: $ {price}</h5>
+                    </AnimateOnChange>
                 </div>
-                <button className="btn btn-dark btn-lg">Zapłać</button>
+                <button className="btn btn-dark btn-lg payBtn">Zapłać</button>
                 
             </div>
         );
@@ -82,6 +98,9 @@ CartPage.propTypes = {
     makeDiscount: PropTypes.func.isRequired,
     discountStatus: PropTypes.bool.isRequired,
     calculatePrice: PropTypes.func.isRequired,
+    discountInputStatus: PropTypes.bool.isRequired,
+    openInput: PropTypes.func.isRequired,
+    toggleSwitch: PropTypes.func.isRequired
 }
     
 export default CartPage;

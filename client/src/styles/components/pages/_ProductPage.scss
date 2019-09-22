@@ -1,13 +1,19 @@
 .ProductPage {
-    @include flex(center, center, row);
+    @include flex(center, center, column);
+
+    img {
+        margin-bottom: 30px;
+        width: 95%;
+    }
 
     .ProductInfo {
-        margin-left: 10%;
         @include frame-model($background-transparent, 40px);
+        @include flex(space-around, center, column);
         
         .addToCartBtn {
             background-color: $third;
             color: $primary;
+            margin-top: 20px;
             padding: 10px 20px;
             border-radius: 10px;
             cursor: pointer;
@@ -18,4 +24,31 @@
             }
         }
     }
+}
+
+@media (min-width: 576px) {
+
+    .ProductPage {
+
+        img {
+            width: auto;
+        }
+    }
+
+}
+
+@media (min-width: 992px) {
+
+    .ProductPage {
+        @include flex(center, center, row);
+
+        img {
+            margin: 0;
+        }
+
+        .ProductInfo {
+            margin-left: 5%;
+        }
+    }
+
 }

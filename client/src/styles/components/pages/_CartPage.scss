@@ -12,7 +12,7 @@
         
         .SingleProductInCart {
             width: 100%;
-            @include flex(space-around, center, row);
+            @include flex(space-around, center, column);
 
             .DescInCart {
                 @include flex(center, center, column);
@@ -29,10 +29,27 @@
             margin: 15px 0;
             align-self: flex-end;
         }
+
+        .price-popup {
+            animation: popup 0.7s;
+        }
     }
 
-    button {
+    .payBtn {
         padding: 10px 75px;
         align-self: flex-end;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .CartPage {
+        
+        .ProductInCartDisplay {
+            
+            .SingleProductInCart {
+                @include flex(space-around, center, row);
+            }
+        }
     }
 }

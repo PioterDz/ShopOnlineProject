@@ -1,0 +1,11 @@
+.ModalHeader, .ModalFooter {
+    background-color: $dark;
+    color: $primary;
+}
+
+.ModalBody {
+    background-color: $light-dark;
+    color: $primary;
+    text-align: center;
+    font-size: 16px;
+}
