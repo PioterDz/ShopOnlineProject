@@ -7,7 +7,7 @@ const Alert = (props) => {
     const { color, children } = props;
 
     return (
-        <UncontrolledAlert className="col-6 align-self-center" color={color}>
+        <UncontrolledAlert className="Alert" color={color}>
             {children}
         </UncontrolledAlert>
     );

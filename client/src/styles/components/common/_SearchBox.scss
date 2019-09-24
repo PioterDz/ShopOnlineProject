@@ -1,0 +1,24 @@
+.SearchBox {
+    height: 50px;
+    @include flex(space-around, center, row);
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+
+    h4 {
+        color: $primary;
+        margin: 0 15px 0 0;
+    }
+
+    .searchInput {
+        height: 50px;
+        padding: 0 5px;
+    }
+
+}
+
+@media (min-width: 576px) {
+
+    .SearchBox {
+        margin: 0;
+    }
+}

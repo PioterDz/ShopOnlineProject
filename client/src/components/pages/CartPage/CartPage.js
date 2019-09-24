@@ -5,8 +5,15 @@ import AnimateOnChange from 'react-animate-on-change';
 
 import SingleProductInCart from '../../features/SingleProductInCart/SingleProductInCart';
 import DiscountButton from '../../common/DiscountButton/DiscountButton';
+import Pagination from '../../common/Pagination/Pagination';
 
 class CartPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 1
+        }
+    }
 
     handleDiscount = () => {
         const { makeDiscount, calculatePrice } = this.props;
@@ -39,17 +46,24 @@ class CartPage extends React.Component {
         openInput();
     }
 
+    onPageChange = (pageNumber) => {
+        this.setState({ page: pageNumber });
+    }
+
     render() {
-        const { cart, price, discountCode, discountStatus, discountInputStatus } = this.props;
+        const { cart, price, discountCode, discountStatus, discountInputStatus, productsPerPage } = this.props;
+        const { page } = this.state;
+
+        const arrayOfProducts = cart.filter((elem, id) => (id >= productsPerPage * (page - 1)) && (id <= (productsPerPage * page) - 1));
 
         return (
 
             <div className="CartPage page">
 
-                <h1>Koszyk</h1>
+                <h1 className="cartHeader">Koszyk</h1>
                 <div className="ProductInCartDisplay">
 
-                    {cart.length !== 0 ? cart.map(el => 
+                    {arrayOfProducts.length !== 0 ? arrayOfProducts.map(el => 
                         <SingleProductInCart
                             key={uuid()}
                             substractFromCounter={this.minusCounter}
@@ -58,6 +72,12 @@ class CartPage extends React.Component {
                             product={el}
                         />) : <h1>Brak produktów w koszyku</h1> }
                 </div>
+                <Pagination 
+                    onPageChange={this.onPageChange} 
+                    currentPage={page} 
+                    displayPerPage={productsPerPage} 
+                    numberOfProducts={cart.length} 
+                />
                 <div className="CartSummary">
                     <DiscountButton 
                         discountStatus={discountStatus} 
@@ -75,7 +95,6 @@ class CartPage extends React.Component {
                     </AnimateOnChange>
                 </div>
                 <button className="btn btn-dark btn-lg payBtn">Zapłać</button>
-                
             </div>
         );
     }
@@ -93,6 +112,7 @@ CartPage.propTypes = {
     calculatePrice: PropTypes.func.isRequired,
     discountInputStatus: PropTypes.bool.isRequired,
     openInput: PropTypes.func.isRequired,
+    productsPerPage: PropTypes.number.isRequired
 }
     
 export default CartPage;

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getCart, getTotalPrice, plusToCounter, minusToCounter, deleteFromCart, getDiscountCode, makeDiscount, getDiscountStatus, 
-    calculatePrice, getDiscountInputStatus, openDiscountInput } from '../../../redux/productRedux/productReducer'
+    calculatePrice, getDiscountInputStatus, openDiscountInput, getProductsPerPage } from '../../../redux/productRedux/productReducer'
 
 import CartPage from './CartPage';
 
@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
     discountCode: getDiscountCode(state),
     discountStatus: getDiscountStatus(state),
     discountInputStatus: getDiscountInputStatus(state),
+    productsPerPage: getProductsPerPage(state)
 });
 
 const mapDispatchToProps = dispatch => ({

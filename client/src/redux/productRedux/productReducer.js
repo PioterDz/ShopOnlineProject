@@ -10,11 +10,12 @@ export const END_REQUEST = 'END_REQUEST';
 export const ERROR_REQUEST = 'ERROR_REQUEST';
 export const RESET_REQUEST = 'RESET_REQUEST';
 export const LOAD_SINGLE_PRODUCT = 'LOAD_SINGLE_PRODUCT';
+export const LOAD_PRODUCTS_BY_PAGE = 'LOAD_PRODUCTS_BY_PAGE';
 
 export const PLUS_TO_COUNTER = 'PLUS_TO_COUNTER';
 export const MINUS_TO_COUNTER = 'MINUS_TO_COUNTER';
 export const SORT_BY = 'SORT_BY';
-export const PAGE_CHANGE = 'PAGE_CHANGE';
+// export const PAGE_CHANGE = 'PAGE_CHANGE';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const MAKE_DISCOUNT = 'MAKE_DISCOUNT';
@@ -22,7 +23,9 @@ export const CALCULATE_PRICE = 'CALCULATE_PRICE';
 export const CHANGE_MODAL_STATE = 'CHANGE_MODAL_STATE';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const OPEN_DISCOUNT_INPUT = 'OPEN_DISCOUNT_INPUT';
+export const SEARCH = 'SEARCH';
 
+// ACITON CREATORS
 
 export const loadData = payload => ({ payload, type: LOAD_DATA });
 export const startRequest = () => ({ type: START_REQUEST });
@@ -34,7 +37,7 @@ export const loadSingleProduct = payload => ({ payload, type: LOAD_SINGLE_PRODUC
 export const plusToCounter = id => ({ id, type: PLUS_TO_COUNTER });
 export const minusToCounter = id => ({ id, type: MINUS_TO_COUNTER });
 export const sortBy = key => ({ key, type: SORT_BY });
-export const pageChange = payload => ({ payload, type: PAGE_CHANGE });
+// export const pageChange = payload => ({ payload, type: PAGE_CHANGE });
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
 export const deleteFromCart = payload => ({ payload, type: DELETE_FROM_CART });
 export const makeDiscount = () => ({ type: MAKE_DISCOUNT });
@@ -42,13 +45,15 @@ export const calculatePrice = () => ({ type: CALCULATE_PRICE });
 export const changeModalState = () => ({ type: CHANGE_MODAL_STATE });
 export const toggleMenu = () => ({ type: TOGGLE_MENU });
 export const openDiscountInput = () => ({ type: OPEN_DISCOUNT_INPUT });
+export const search = input => ({ input, type: SEARCH });
 
 // SELECTORS
 
 export const getProducts = product => product.data;
+export const getCurrentDisplay = product => product.currentDisplay;
+export const getSingleProduct = product => product.singleProduct;
 export const getProductsPerPage = product => product.displayPerPage;
-export const currentPage = product => product.page;
-export const getNumberOfPages = product => Math.ceil(product.data.length / product.displayPerPage);
+// export const currentPage = product => product.page;
 export const getCart = product => product.cart;
 export const getTotalPrice = product => product.totalPrice;
 export const getModalState = product => product.modal;
@@ -80,6 +85,21 @@ export const loadDataRequest = () => {
   };
 };
 
+export const loadSingleProductRequest = (id) => {
+  return async dispatch => {
+
+      dispatch(startRequest());
+      try {
+          let res = await axios.get(`${API_URL}/data/${id}`);
+          await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+          await dispatch(loadSingleProduct(res.data));
+          dispatch(endRequest());
+      } catch(e) {
+          dispatch(errorRequest(e.message));
+      }
+  }
+};
+
 
 
 
@@ -90,23 +110,22 @@ export default function productReducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOAD_DATA:
 
-      return { ...state, data: action.payload };
+      return { ...state, data: action.payload, currentDisplay: action.payload };
     case START_REQUEST:
 
-      return { ...state, data: [], singlePost: {}, request: { pending: true, error: null, success: null } };
+      return { ...state, data: [], singleProduct: [], request: { pending: true, error: null, success: null } };
     case END_REQUEST:
 
       return { ...state, request: { pending: false, error: null, success: true } };
     case ERROR_REQUEST:
 
       return { ...state, request: { pending: false, error: action.error, success: false } };
-    case LOAD_SINGLE_PRODUCT:
-
-      return { ...state, singleProduct: action.payload };
     case RESET_REQUEST:
       
       return {...state, request: { pending: false, error: null, success: null } };
+    case LOAD_SINGLE_PRODUCT:
 
+      return { ...state, singleProduct: action.payload };
 
     case ADD_TO_CART:
 
@@ -124,11 +143,11 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, cart: filteredCart
       }
-    case PAGE_CHANGE:
+    // case PAGE_CHANGE:
 
-      return {
-        ...state, page: action.payload
-      } 
+    //   return {
+    //     ...state, page: action.payload
+    //   } 
     case PLUS_TO_COUNTER:
 
       const productToPlus = state.cart.find(el => el.id === action.id);
@@ -193,12 +212,20 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, data: newData, sortDirection: action.key
       }
+
     case OPEN_DISCOUNT_INPUT:
 
       return {
         ...state, discountInput: true
       }
-    
+
+    case SEARCH: 
+      const filteredBySearch = state.data.filter(el => el.name.toLowerCase().indexOf(action.input.toLowerCase()) !== -1);
+
+      return {
+        ...state, currentDisplay: filteredBySearch
+      }
+
     default:
       return state;
   }

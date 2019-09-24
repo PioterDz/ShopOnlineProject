@@ -4,11 +4,16 @@ import { PropTypes } from 'prop-types';
 import Sort from '../../features/Sort/Sort';
 import ProductsList from '../../features/ProductsList/ProductsList';
 import Pagination from '../../common/Pagination/Pagination';
-import ModalHomePage from '../../common/ModalHomePage/ModalHomePage';
-import LoadSpinner from '../../common/LoadSpinner/LoadSpinner';
-import Alert from '../../common/Alert/Alert';
+import ModalComponent from '../../common/Modal/Modal';
+import SearchBox from '../../common/SearchBox/SearchBox';
 
 class HomePage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            page: 1
+        }
+    }
 
     componentDidMount() {
         const { loadData, resetRequest } = this.props;
@@ -16,10 +21,8 @@ class HomePage extends React.Component {
         loadData();
     }
 
-    onPageChange = (pageChoosed) => {
-        const { pageChange } = this.props;
-
-        pageChange(pageChoosed);
+    onPageChange = (pageNumber) => {
+        this.setState({ page: pageNumber });
     }
 
     onSort = (key) => {
@@ -34,33 +37,48 @@ class HomePage extends React.Component {
         changeModal();
     }
 
-    render() {
-        const { products, page, displayPerPage, numberOfPages, modal, sortDirection, request } = this.props;
+    handleSearch = (input) => {
+        const { search } = this.props;
 
-        if(request.pending || request.success === null) return <LoadSpinner />;
-        else if(!request.pending && request.error !== null) return <Alert color='error' children={request.error} />;
-        else if(!request.pending && request.success && products.length === 0) return <Alert color='info' children='no products' />;
-        else if(!request.pending && request.success && products.length > 0)
+        search(input);
+    }
+
+
+
+    render() {
+        const { products, displayPerPage, modal, sortDirection, request, discountCode } = this.props;
+        const { page } = this.state;
+
             return (
                 <div className="HomePage row page">
                     <Sort
                         handleSort={this.onSort}
                         sortDirection={sortDirection}
+                        numberOfProducts={products.length}
                     />
-                    <ProductsList 
-                        products={products}
-                        currentPage={page}
-                        displayPerPage={displayPerPage}
-                    />
+
+                    <div className="col-sm-8">
+                        <SearchBox handleChange={this.handleSearch} />  
+                        <ProductsList 
+                            products={products}
+                            currentPage={page}
+                            displayPerPage={displayPerPage}
+                            request={request}
+                        />
+                    </div>
+
                     <Pagination
                         onPageChange={this.onPageChange}
-                        numberOfPages={numberOfPages}
                         currentPage={page}
+                        displayPerPage={displayPerPage}
+                        numberOfProducts={products.length}
                     />
-                    <ModalHomePage 
+                    
+                    <ModalComponent
                         closeModal={this.closeModal}
+                        header='Tylko dzisiaj'
                         modal={modal}
-                        content={`Oferta specjalna! Jeżeli dzisiaj dokonasz zakupu na naszej stronie wpisując kod rabatowy 'COZABZDURA', otrzymasz 20% zniżki na wszystko! Z takim urlopem nie ma co zwlekać!`} 
+                        content={'Oferta specjalna! Jeżeli dzisiaj dokonasz zakupu na naszej stronie wpisując kod rabatowy ' + discountCode + ', otrzymasz 20% zniżki na wszystko! Z takim urlopem nie ma co zwlekać!'}
                     />
                 </div>
             );
@@ -70,17 +88,15 @@ class HomePage extends React.Component {
 
 HomePage.propTypes = {
     products: PropTypes.array.isRequired,
-    pageChange: PropTypes.func.isRequired,
-    page: PropTypes.number.isRequired,
     displayPerPage: PropTypes.number.isRequired,
-    numberOfPages: PropTypes.number.isRequired,
     modal: PropTypes.bool.isRequired,
     changeModal: PropTypes.func.isRequired,
     sortBy: PropTypes.func.isRequired,
     sortDirection: PropTypes.string.isRequired,
     loadData: PropTypes.func.isRequired,
     request: PropTypes.object.isRequired,
-    resetRequest: PropTypes.func.isRequired
+    resetRequest: PropTypes.func.isRequired,
+    discountCode: PropTypes.string.isRequired
 }
     
 export default HomePage;

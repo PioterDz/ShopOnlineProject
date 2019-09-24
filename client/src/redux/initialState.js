@@ -1,7 +1,7 @@
 const initialState = {
-    page: 1,
     displayPerPage: 6,
     cart: [],
+    currentDisplay: [],
     totalPrice: 0,
     modal: true,
     discountCode: 'COZABZDURA',
@@ -10,7 +10,7 @@ const initialState = {
     menuIsOpen: false,
     sortDirection: '',
     discountInput: false,
-    singleProduct: {},
+    singleProduct: [],
     data: [],
     request: {
       pending: false,

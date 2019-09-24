@@ -7,15 +7,15 @@ const DropDown = (props) => {
     const { alphabetSort, reverseAlphabetSort, priceSort, reversePriceSort } = props;
     
     return (
-        <UncontrolledDropdown className="d-sm-none mb-3" size="lg">
+        <UncontrolledDropdown className="d-md-none mb-3" size="lg">
             <DropdownToggle caret>
                 Sortuj
             </DropdownToggle>
-            <DropdownMenu>
-                <DropdownItem onClick={alphabetSort}>Nazwa A-Z</DropdownItem>
-                <DropdownItem onClick={reverseAlphabetSort}>Nazwa Z-A</DropdownItem>
-                <DropdownItem onClick={priceSort}>Cena rosnąco</DropdownItem>
-                <DropdownItem onClick={reversePriceSort}>Cena malejąco</DropdownItem>
+            <DropdownMenu className="dropDownMenu">
+                <DropdownItem className="dropDownItem" onClick={alphabetSort}>Nazwa A-Z</DropdownItem>
+                <DropdownItem className="dropDownItem" onClick={reverseAlphabetSort}>Nazwa Z-A</DropdownItem>
+                <DropdownItem className="dropDownItem" onClick={priceSort}>Cena rosnąco</DropdownItem>
+                <DropdownItem className="dropDownItem" onClick={reversePriceSort}>Cena malejąco</DropdownItem>
             </DropdownMenu>
         </UncontrolledDropdown>
     );
