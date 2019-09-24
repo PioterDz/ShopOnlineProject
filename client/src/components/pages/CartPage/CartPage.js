@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import uuid from 'uuidv4';
 import { PropTypes } from 'prop-types';
 import AnimateOnChange from 'react-animate-on-change';
@@ -6,12 +7,14 @@ import AnimateOnChange from 'react-animate-on-change';
 import SingleProductInCart from '../../features/SingleProductInCart/SingleProductInCart';
 import DiscountButton from '../../common/DiscountButton/DiscountButton';
 import Pagination from '../../common/Pagination/Pagination';
+import Modal from '../../common/Modal/Modal';
 
 class CartPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: 1
+            page: 1,
+            modal: false
         }
     }
 
@@ -50,9 +53,13 @@ class CartPage extends React.Component {
         this.setState({ page: pageNumber });
     }
 
+    toggleModal = () => {
+        this.setState({ modal: !this.state.modal })
+    }
+
     render() {
         const { cart, price, discountCode, discountStatus, discountInputStatus, productsPerPage } = this.props;
-        const { page } = this.state;
+        const { page, modal } = this.state;
 
         const arrayOfProducts = cart.filter((elem, id) => (id >= productsPerPage * (page - 1)) && (id <= (productsPerPage * page) - 1));
 
@@ -94,7 +101,14 @@ class CartPage extends React.Component {
                         <h5 className="numbers">Total: $ {price}</h5>
                     </AnimateOnChange>
                 </div>
-                <button className="btn btn-dark btn-lg payBtn">Zapłać</button>
+
+                {cart.length !== 0 ?         
+                <Link to={'summary'}>
+                    <button className="btn btn-dark btn-lg">Podsumowanie</button>
+                </Link> : 
+                <button className="btn btn-dark btn-lg payBtn" onClick={this.toggleModal}>Podsumowanie</button>
+                }
+                <Modal content="Aby coś kupić musisz najpierw wrzucić to do koszyka :)" closeModal={this.toggleModal} modal={modal} header="Sory" />
             </div>
         );
     }

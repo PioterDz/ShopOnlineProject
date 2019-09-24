@@ -8,6 +8,7 @@ import RulesPage from './components/pages/RulesPage/RulesPage';
 import ContactPage from './components/pages/ContactPage/ContactPage';
 import CartPage from './components/pages/CartPage/CartPageContainer';
 import ProductPage from './components/pages/ProductPage/ProductPageContainer';
+import SummaryPage from './components/pages/SummaryPage/SummaryPageContainer';
 import NotFound from './components/pages/NotFoundPage/NotFoundPage';
 
 class App extends React.Component {
@@ -22,6 +23,7 @@ class App extends React.Component {
                     <Route exact path="/contact" component={ContactPage} />
                     <Route exact path="/cart" component={CartPage} />
                     <Route exact path="/productpage/:id" component={ProductPage} />
+                    <Route exact path="/summary" component={SummaryPage} />
                     <Route component={NotFound} />
                 </Switch>
             </MainLayout>

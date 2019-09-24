@@ -15,7 +15,6 @@ export const LOAD_PRODUCTS_BY_PAGE = 'LOAD_PRODUCTS_BY_PAGE';
 export const PLUS_TO_COUNTER = 'PLUS_TO_COUNTER';
 export const MINUS_TO_COUNTER = 'MINUS_TO_COUNTER';
 export const SORT_BY = 'SORT_BY';
-// export const PAGE_CHANGE = 'PAGE_CHANGE';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const MAKE_DISCOUNT = 'MAKE_DISCOUNT';
@@ -37,7 +36,6 @@ export const loadSingleProduct = payload => ({ payload, type: LOAD_SINGLE_PRODUC
 export const plusToCounter = id => ({ id, type: PLUS_TO_COUNTER });
 export const minusToCounter = id => ({ id, type: MINUS_TO_COUNTER });
 export const sortBy = key => ({ key, type: SORT_BY });
-// export const pageChange = payload => ({ payload, type: PAGE_CHANGE });
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
 export const deleteFromCart = payload => ({ payload, type: DELETE_FROM_CART });
 export const makeDiscount = () => ({ type: MAKE_DISCOUNT });
@@ -53,7 +51,6 @@ export const getProducts = product => product.data;
 export const getCurrentDisplay = product => product.currentDisplay;
 export const getSingleProduct = product => product.singleProduct;
 export const getProductsPerPage = product => product.displayPerPage;
-// export const currentPage = product => product.page;
 export const getCart = product => product.cart;
 export const getTotalPrice = product => product.totalPrice;
 export const getModalState = product => product.modal;
@@ -143,11 +140,7 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, cart: filteredCart
       }
-    // case PAGE_CHANGE:
 
-    //   return {
-    //     ...state, page: action.payload
-    //   } 
     case PLUS_TO_COUNTER:
 
       const productToPlus = state.cart.find(el => el.id === action.id);

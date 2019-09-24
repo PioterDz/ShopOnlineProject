@@ -30,7 +30,7 @@ class Counter extends React.Component {
                     <span onClick={this.plusOne} className="btn-light bg-transparent mx-2">+</span>
                     <p className="ml-2">osoby</p>
                 </div>
-                <p className="text-danger" onClick={this.deleteProduct}>usuń produkt</p>
+                <p className="text-danger deleteProduct" onClick={this.deleteProduct}>usuń produkt</p>
             </div>
         );
     }

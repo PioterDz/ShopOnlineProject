@@ -1,0 +1,31 @@
+.SummaryPage {
+    @include flex(flex-start, flex-start, column);
+
+    h1, h4, h5 {
+        color: $primary;
+    }
+
+    ul {
+        @include frame-model($background-transparent, 40px);
+        width: 100%;
+        list-style-type: none;
+
+        li {
+            margin-bottom: 40px;
+            border-bottom: 1px solid $dark;
+        }
+
+        .oneProductSummary {
+            float: right;
+            font-weight: bold;
+        }
+    }
+
+    .priceSummary {
+        align-self: flex-end;
+
+        button {
+            float: right;
+        }
+    }
+}

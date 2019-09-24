@@ -8,6 +8,10 @@
         span {
             cursor: pointer;
             font-size: 30px;
+
+            &:hover {
+                color: $third;
+            }
         }
     }
 
@@ -15,6 +19,13 @@
         margin: 15px;
         cursor: pointer;
         font-size: 12px;
+    }
+
+    .deleteProduct {
+
+        &:hover {
+            font-weight: bold;
+        }
     }
 }
 

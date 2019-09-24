@@ -1,9 +1,13 @@
 .SingleProductInCart {
 
-    img {
+    a {
+        @include flex(center, center, row);
 
-        &:hover {
-            @extend %popup-animation;
+        img {
+
+            &:hover {
+                @extend %popup-animation;
+            }
         }
     }
 

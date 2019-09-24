@@ -16,7 +16,7 @@ const SingleProductInCart = (props) => {
         <div className="SingleProductInCart bg-transparent my-4">
 
             <Link target="_blank" to={'productpage/' + product.id}>
-                <img alt="product" className="col-md-7" src={`./images/${product.img}`} />
+                <img alt="product" className="col-10 col-sm-7 col-md-10 col-xl-8" src={`./images/${product.img}`} />
             </Link>
 
             <div className="DescInCart col-md-4">

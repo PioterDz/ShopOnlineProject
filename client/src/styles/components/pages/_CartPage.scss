@@ -39,8 +39,12 @@
         }
     }
 
+    a {
+        @include flex(flex-end, center, row);
+        width: 100%;
+    }
+
     .payBtn {
-        padding: 10px 75px;
         align-self: flex-end;
     }
 }
