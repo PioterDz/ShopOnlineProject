@@ -16,8 +16,9 @@ class HomePage extends React.Component {
     }
 
     componentDidMount() {
-        const { loadData, resetRequest } = this.props;
+        const { loadData, resetRequest, resetSortDirection } = this.props;
         resetRequest();
+        resetSortDirection();
         loadData();
     }
 
@@ -46,15 +47,15 @@ class HomePage extends React.Component {
 
 
     render() {
-        const { products, displayPerPage, modal, sortDirection, request, discountCode } = this.props;
+        const { products, displayPerPage, modal, request, discountCode, sortDirection } = this.props;
         const { page } = this.state;
 
             return (
                 <div className="HomePage row page">
                     <Sort
                         handleSort={this.onSort}
-                        sortDirection={sortDirection}
                         numberOfProducts={products.length}
+                        sortDirection={sortDirection}
                     />
 
                     <div className="col-sm-8">
@@ -96,7 +97,8 @@ HomePage.propTypes = {
     loadData: PropTypes.func.isRequired,
     request: PropTypes.object.isRequired,
     resetRequest: PropTypes.func.isRequired,
-    discountCode: PropTypes.string.isRequired
+    discountCode: PropTypes.string.isRequired,
+    resetSortDirection: PropTypes.func.isRequired
 }
     
 export default HomePage;

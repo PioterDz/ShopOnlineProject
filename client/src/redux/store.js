@@ -1,14 +1,9 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import { saveState, loadState } from './localSession';
+import { saveState, loadState } from './localStorage';
 import productReducer from './productRedux/productReducer';
-// import thunkReducer from './productRedux/thunkReducer';
 
-// const rootReducer = combineReducers({
-//     productReducer,
-//     thunkReducer
-// });
 
 const persistedStore = loadState();
 

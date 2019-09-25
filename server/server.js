@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const app = express();
 const env = require('dotenv').config();
+const mongoSanitize = require('express-mongo-sanitize');
 
 const productRoutes = require('./routes/product.routes');
 const loadTestData = require('./data');
@@ -14,6 +15,9 @@ app.use(cors());
 app.use(helmet());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(mongoSanitize({
+  replaceWith: '_'
+}));
 
 app.use('/api', productRoutes);
 

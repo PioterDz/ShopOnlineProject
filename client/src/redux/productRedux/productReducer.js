@@ -23,6 +23,8 @@ export const CHANGE_MODAL_STATE = 'CHANGE_MODAL_STATE';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const OPEN_DISCOUNT_INPUT = 'OPEN_DISCOUNT_INPUT';
 export const SEARCH = 'SEARCH';
+export const MAKE_ORDER = 'MAKE_ORDER';
+export const RESET_SORT = 'RESET_SORT';
 
 // ACITON CREATORS
 
@@ -44,6 +46,8 @@ export const changeModalState = () => ({ type: CHANGE_MODAL_STATE });
 export const toggleMenu = () => ({ type: TOGGLE_MENU });
 export const openDiscountInput = () => ({ type: OPEN_DISCOUNT_INPUT });
 export const search = input => ({ input, type: SEARCH });
+export const makeOrder = () => ({ type: MAKE_ORDER });
+export const resetSort = () => ({ type: RESET_SORT });
 
 // SELECTORS
 
@@ -57,9 +61,10 @@ export const getModalState = product => product.modal;
 export const getDiscountCode = product => product.discountCode;
 export const getDiscountStatus = product => product.discountIsActive;
 export const getMenuState = product => product.menuIsOpen;
-export const getSortDirection = product => product.sortDirection;
 export const getDiscountInputStatus = product => product.discountInput;
 export const getRequest = product => product.request;
+export const getOrderStatus = product => product.orderStatus;
+export const getSortDirection = product => product.sortDirection;
 
 
 // THUNK
@@ -97,6 +102,24 @@ export const loadSingleProductRequest = (id) => {
   }
 };
 
+export const postCart = (cart, price) => {
+  return async dispatch => {
+
+    dispatch(startRequest());
+    try {
+
+        await axios.post(`${API_URL}/data/summary`, cart);
+        await axios.post(`${API_URL}/data/summary`, price);
+        await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+        dispatch(makeOrder());
+        dispatch(endRequest());
+
+    } catch(e) {
+        dispatch(errorRequest(e.message));
+    }
+}
+}
+
 
 
 
@@ -130,7 +153,7 @@ export default function productReducer(state = initialState, action = {}) {
       productToAdd.countNumber += 1;
 
       return {
-        ...state, cart: state.cart.concat(productToAdd)
+        ...state, cart: state.cart.concat(productToAdd), orderStatus: false
       }
 
     case DELETE_FROM_CART:
@@ -194,6 +217,7 @@ export default function productReducer(state = initialState, action = {}) {
     
     case SORT_BY:
       let newData;
+      console.log(action.key);
       if(action.key === 'asc' || action.key === 'desc') {
         newData = state.data.sort((a, b) => action.key === 'asc' ? parseFloat(a.price) - parseFloat(b.price) : parseFloat(b.price) - parseFloat(a.price));
       } else if(action.key === 'AtoZ') {
@@ -203,7 +227,7 @@ export default function productReducer(state = initialState, action = {}) {
       }
 
       return {
-        ...state, data: newData, sortDirection: action.key
+        ...state, currentDisplay: newData, data: newData, sortDirection: action.key
       }
 
     case OPEN_DISCOUNT_INPUT:
@@ -217,6 +241,18 @@ export default function productReducer(state = initialState, action = {}) {
 
       return {
         ...state, currentDisplay: filteredBySearch
+      }
+
+    case MAKE_ORDER:
+
+      return {
+        ...state, orderStatus: true, cart: [], totalPrice: 0
+      }
+
+    case RESET_SORT:
+
+      return {
+        ...state, sortDirection: ''
       }
 
     default:

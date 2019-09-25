@@ -5,6 +5,7 @@ import DropDown from '../../common/DropDown/DropDown';
 
 class Sort extends React.Component {
 
+
     alphabetSort = () => {
         const { handleSort } = this.props;
 
@@ -32,7 +33,7 @@ class Sort extends React.Component {
 
     render() {
 
-        const { sortDirection, numberOfProducts } = this.props;
+        const { numberOfProducts, sortDirection } = this.props;
 
         return (
             <div className="Sort col-sm-4">
@@ -59,6 +60,7 @@ class Sort extends React.Component {
 
 Sort.propTypes = {
     handleSort: PropTypes.func.isRequired,
+    numberOfProducts: PropTypes.number.isRequired,
     sortDirection: PropTypes.string.isRequired
 }
 

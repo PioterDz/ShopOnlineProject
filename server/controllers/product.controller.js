@@ -1,4 +1,5 @@
 const Product = require('../models/product.models');
+const fs = require('fs');
 
 exports.getData = async (req, res) => {
 
@@ -18,4 +19,15 @@ exports.getSingleProduct = async (req, res) => {
     } catch(err) {
       res.status(500).json(err);
     }
+}
+
+exports.saveSummary = async (req, res) => {
+
+  try {
+    res.status(200).json(await fs.appendFile('summaries.txt', JSON.stringify(req.body), err => {
+      if(err) throw err;
+    }))
+  } catch(err) {
+    res.status(500).json(err);
+  }
 }
