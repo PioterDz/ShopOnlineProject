@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { AnimatedSwitch } from 'react-router-transition';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import HomePage from './components/pages/HomePage/HomePageContainer';
@@ -11,12 +12,22 @@ import ProductPage from './components/pages/ProductPage/ProductPageContainer';
 import SummaryPage from './components/pages/SummaryPage/SummaryPageContainer';
 import NotFound from './components/pages/NotFoundPage/NotFoundPage';
 
+import { bounceTransition, mapStyles } from './AnimatedSwitch';
+
+  
 class App extends React.Component {
 
     render() {
+
         return (
             <MainLayout>
-                <Switch>
+                <AnimatedSwitch
+                    atEnter={bounceTransition.atEnter}
+                    atLeave={bounceTransition.atLeave}
+                    atActive={bounceTransition.atActive}
+                    mapStyles={mapStyles}
+                    className="route-wrapper"
+                >
                     <Route exact path="/" component={HomePage} />
                     <Route exact path="/faq" component={FaqPage} />
                     <Route exact path="/rules" component={RulesPage} />
@@ -25,8 +36,9 @@ class App extends React.Component {
                     <Route exact path="/productpage/:id" component={ProductPage} />
                     <Route exact path="/summary" component={SummaryPage} />
                     <Route component={NotFound} />
-                </Switch>
+                </AnimatedSwitch>
             </MainLayout>
+
         );
     }
 }

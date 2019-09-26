@@ -217,7 +217,7 @@ export default function productReducer(state = initialState, action = {}) {
     
     case SORT_BY:
       let newData;
-      console.log(action.key);
+
       if(action.key === 'asc' || action.key === 'desc') {
         newData = state.data.sort((a, b) => action.key === 'asc' ? parseFloat(a.price) - parseFloat(b.price) : parseFloat(b.price) - parseFloat(a.price));
       } else if(action.key === 'AtoZ') {
