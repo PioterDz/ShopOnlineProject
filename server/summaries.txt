@@ -1,1 +1,0 @@
-[{"name":"Damaszek","countNumber":2},{"name":"Nairobi","countNumber":1},{"name":"Kapadocja","countNumber":1},{"price":330.15,"discountStatus":true,"timeStamp":"2019-09-25T20:28:32.380Z"}]{"330_15":""}

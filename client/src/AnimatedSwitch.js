@@ -20,12 +20,12 @@ export const bounceTransition = {
 
     atEnter: {
       opacity: 0,
-      scale: 1.2,
+      scale: 1.5,
     },
 
     atLeave: {
-      opacity: bounce(0),
-      scale: bounce(0.8),
+      opacity: bounce(0.2),
+      scale: bounce(0.5),
     },
 
     atActive: {

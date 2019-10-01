@@ -8,7 +8,7 @@ const env = require('dotenv').config();
 const mongoSanitize = require('express-mongo-sanitize');
 
 const productRoutes = require('./routes/product.routes');
-const loadTestData = require('./data');
+// const loadTestData = require('./data');
 
 
 app.use(cors());
@@ -21,12 +21,12 @@ app.use(mongoSanitize({
 
 app.use('/api', productRoutes);
 
-mongoose.connect(config.DB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-aqaim.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 let db = mongoose.connection;
 
 db.once('open', () => {
   console.log('Connected to the database');
-  loadTestData();
+  // loadTestData();
 });
 db.on('error', (err) => console.log('Error ' + err));
 

@@ -98,7 +98,7 @@ class CartPage extends React.Component {
                         animationClassName="price-popup"
                         animate={price}
                     >
-                        <h5 className="numbers">Total: $ {price}</h5>
+                        <h5 className="numbers">Total: $ {price.toFixed(2)}</h5>
                     </AnimateOnChange>
                 </div>
 

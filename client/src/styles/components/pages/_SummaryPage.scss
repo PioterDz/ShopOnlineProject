@@ -5,19 +5,23 @@
         color: $primary;
     }
 
-    ul {
-        @include frame-model($background-transparent, 40px);
+    .Summary {
         width: 100%;
-        list-style-type: none;
 
-        li {
-            margin-bottom: 40px;
-            border-bottom: 1px solid $dark;
-        }
-
-        .oneProductSummary {
-            float: right;
-            font-weight: bold;
+        ul {
+            @include frame-model($background-transparent, 40px);
+            width: 100%;
+            list-style-type: none;
+    
+            li {
+                margin-bottom: 40px;
+                border-bottom: 1px solid $dark;
+            }
+    
+            .oneProductSummary {
+                float: right;
+                font-weight: bold;
+            }
         }
     }
 

@@ -24,7 +24,7 @@ exports.getSingleProduct = async (req, res) => {
 exports.saveSummary = async (req, res) => {
 
   try {
-    res.status(200).json(await fs.appendFile('summaries.txt', JSON.stringify(req.body), err => {
+    res.status(200).json(await fs.appendFile('summaries.json', JSON.stringify(req.body) + '\n', err => {
       if(err) throw err;
     }))
   } catch(err) {
