@@ -8,7 +8,6 @@ const env = require('dotenv').config();
 const mongoSanitize = require('express-mongo-sanitize');
 
 const productRoutes = require('./routes/product.routes');
-// const loadTestData = require('./data');
 
 
 app.use(cors());
@@ -26,7 +25,6 @@ let db = mongoose.connection;
 
 db.once('open', () => {
   console.log('Connected to the database');
-  // loadTestData();
 });
 db.on('error', (err) => console.log('Error ' + err));
 
