@@ -1,0 +1,13 @@
+.dropDownMenu {
+    background-color: $dark;
+    
+    .dropDownItem {
+        color: $primary;
+        margin: 10px 0;
+
+        &:hover {
+            color: $third;
+            background-color: $background-transparent;
+        }
+    }
+}

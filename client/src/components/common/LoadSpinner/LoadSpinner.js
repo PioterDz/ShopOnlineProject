@@ -1,13 +1,12 @@
 import React from 'react';
-
-import { Spinner } from 'reactstrap';
+import { ReactComponent as Spinner } from './puff.svg';
 
 class LoadSpinner extends React.Component {
 
     render() {
         return (
             <div className="Spinner">
-                <Spinner color="secondary" style={{ width: '3rem', height: '3rem' }} />
+                <Spinner />
             </div>
         );
     }

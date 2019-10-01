@@ -1,22 +1,25 @@
 import { connect } from 'react-redux';
-import { getProducts, getProductsPerPage, currentPage, getNumberOfPages, pageChange, getModalState, changeModalState, sortBy, getSortDirection } from '../../../redux/productRedux/productReducer'
+import { getCurrentDisplay, getRequest, loadDataRequest, resetRequest, getProductsPerPage, getModalState, changeModalState, sortBy, getSortDirection, resetSort, getDiscountCode, search } from '../../../redux/productRedux/productReducer';
 
 import HomePage from './HomePage';
 
 
 const mapStateToProps = state => ({
-    products: getProducts(state),
+    products: getCurrentDisplay(state),
     displayPerPage: getProductsPerPage(state),
-    page: currentPage(state),
-    numberOfPages: getNumberOfPages(state),
     modal: getModalState(state),
+    request: getRequest(state),
+    discountCode: getDiscountCode(state),
     sortDirection: getSortDirection(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-    pageChange: (payload) => dispatch(pageChange(payload)),
+    loadData: () => dispatch(loadDataRequest()),
     changeModal: () => dispatch(changeModalState()),
-    sortBy: (key) => dispatch(sortBy(key))
+    sortBy: key => dispatch(sortBy(key)),
+    resetRequest: () => dispatch(resetRequest()),
+    search: input => dispatch(search(input)),
+    resetSortDirection: () => dispatch(resetSort())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

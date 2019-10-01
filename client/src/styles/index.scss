@@ -18,6 +18,7 @@
 @import './components/pages/NotFoundPage';
 @import './components/pages/FaqPage';
 @import './components/pages/RulesPage';
+@import './components/pages/SummaryPage';
 
 @import './components/features/NavBar';
 @import './components/features/Footer';
@@ -32,10 +33,13 @@
 @import './components/common/Counter';
 @import './components/common/Logo';
 @import './components/common/Pagination';
-@import './components/common/ModalHomePage';
+@import './components/common/Modal';
 @import './components/common/DiscountButton';
 @import './components/common/LoadSpinner';
 @import './components/common/Switch';
+@import './components/common/SearchBox';
+@import './components/common/DropDown';
+@import './components/common/Alert';
 
 
 

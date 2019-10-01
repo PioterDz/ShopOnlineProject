@@ -2,14 +2,14 @@ import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { PropTypes } from 'prop-types';
 
-const ModalHomePage = (props) => {
+const ModalComponent = (props) => {
 
-  const { content, closeModal, modal } = props;
+  const { content, closeModal, modal, header } = props;
 
   return (
     <div>
-      <Modal isOpen={modal} toggle={closeModal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 700 }}>
-        <ModalHeader className="ModalHeader" toggle={closeModal}>TYLKO DZISIAJ!</ModalHeader>
+      <Modal className="Modal" isOpen={modal} toggle={closeModal} modalTransition={{ timeout: 700 }} backdropTransition={{ timeout: 700 }}>
+        <ModalHeader className="ModalHeader" toggle={closeModal}>{header}</ModalHeader>
         <ModalBody className="ModalBody">
           {content}
         </ModalBody>
@@ -22,10 +22,11 @@ const ModalHomePage = (props) => {
 }
 
 
-ModalHomePage.propTypes = {
+ModalComponent.propTypes = {
     content: PropTypes.string.isRequired,
     closeModal: PropTypes.func.isRequired,
-    modal: PropTypes.bool.isRequired
+    modal: PropTypes.bool.isRequired,
+    header: PropTypes.string.isRequired
 }
 
-export default ModalHomePage;
+export default ModalComponent;

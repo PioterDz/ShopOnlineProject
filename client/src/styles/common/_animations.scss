@@ -39,3 +39,13 @@
         transform: translate3d(0, 60%, 0);
     }
 }
+
+.route-wrapper {
+    position: relative;
+  
+    .route-wrapper > div {
+        position: absolute;
+    }
+}
+  
+ 

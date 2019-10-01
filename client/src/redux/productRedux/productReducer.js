@@ -1,12 +1,20 @@
 import initialState from '../initialState';
-
+import axios from 'axios';
+import { API_URL } from '../config';
 
 // ACTIONS 
+
+export const LOAD_DATA = 'LOAD_DATA';
+export const START_REQUEST = 'START_REQUEST';
+export const END_REQUEST = 'END_REQUEST';
+export const ERROR_REQUEST = 'ERROR_REQUEST';
+export const RESET_REQUEST = 'RESET_REQUEST';
+export const LOAD_SINGLE_PRODUCT = 'LOAD_SINGLE_PRODUCT';
+export const LOAD_PRODUCTS_BY_PAGE = 'LOAD_PRODUCTS_BY_PAGE';
 
 export const PLUS_TO_COUNTER = 'PLUS_TO_COUNTER';
 export const MINUS_TO_COUNTER = 'MINUS_TO_COUNTER';
 export const SORT_BY = 'SORT_BY';
-export const PAGE_CHANGE = 'PAGE_CHANGE';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_FROM_CART = 'DELETE_FROM_CART';
 export const MAKE_DISCOUNT = 'MAKE_DISCOUNT';
@@ -14,14 +22,22 @@ export const CALCULATE_PRICE = 'CALCULATE_PRICE';
 export const CHANGE_MODAL_STATE = 'CHANGE_MODAL_STATE';
 export const TOGGLE_MENU = 'TOGGLE_MENU';
 export const OPEN_DISCOUNT_INPUT = 'OPEN_DISCOUNT_INPUT';
-export const TOGGLE_SWITCH = 'TOGGLE_SWITCH'
+export const SEARCH = 'SEARCH';
+export const MAKE_ORDER = 'MAKE_ORDER';
+export const RESET_SORT = 'RESET_SORT';
 
+// ACITON CREATORS
 
+export const loadData = payload => ({ payload, type: LOAD_DATA });
+export const startRequest = () => ({ type: START_REQUEST });
+export const endRequest = () => ({ type: END_REQUEST });
+export const errorRequest = error => ({ error, type: ERROR_REQUEST });
+export const resetRequest = () => ({ type: RESET_REQUEST });
+export const loadSingleProduct = payload => ({ payload, type: LOAD_SINGLE_PRODUCT });
 
 export const plusToCounter = id => ({ id, type: PLUS_TO_COUNTER });
 export const minusToCounter = id => ({ id, type: MINUS_TO_COUNTER });
 export const sortBy = key => ({ key, type: SORT_BY });
-export const pageChange = payload => ({ payload, type: PAGE_CHANGE });
 export const addToCart = payload => ({ payload, type: ADD_TO_CART });
 export const deleteFromCart = payload => ({ payload, type: DELETE_FROM_CART });
 export const makeDiscount = () => ({ type: MAKE_DISCOUNT });
@@ -29,35 +45,115 @@ export const calculatePrice = () => ({ type: CALCULATE_PRICE });
 export const changeModalState = () => ({ type: CHANGE_MODAL_STATE });
 export const toggleMenu = () => ({ type: TOGGLE_MENU });
 export const openDiscountInput = () => ({ type: OPEN_DISCOUNT_INPUT });
-export const toggleSwitch = id => ({ id, type: TOGGLE_SWITCH });
+export const search = input => ({ input, type: SEARCH });
+export const makeOrder = () => ({ type: MAKE_ORDER });
+export const resetSort = () => ({ type: RESET_SORT });
 
 // SELECTORS
 
 export const getProducts = product => product.data;
+export const getCurrentDisplay = product => product.currentDisplay;
+export const getSingleProduct = product => product.singleProduct;
 export const getProductsPerPage = product => product.displayPerPage;
-export const currentPage = product => product.page;
-export const getNumberOfPages = product => Math.ceil(product.data.length / product.displayPerPage);
 export const getCart = product => product.cart;
 export const getTotalPrice = product => product.totalPrice;
 export const getModalState = product => product.modal;
 export const getDiscountCode = product => product.discountCode;
 export const getDiscountStatus = product => product.discountIsActive;
 export const getMenuState = product => product.menuIsOpen;
-export const getSortDirection = product => product.sortDirection;
 export const getDiscountInputStatus = product => product.discountInput;
+export const getRequest = product => product.request;
+export const getOrderStatus = product => product.orderStatus;
+export const getSortDirection = product => product.sortDirection;
+
+
+// THUNK
+
+export const loadDataRequest = () => {
+  return async dispatch => {
+
+    dispatch(startRequest());
+    try {
+
+      let res = await axios.get(`${API_URL}/data`);
+      await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+      dispatch(loadData(res.data));
+      dispatch(endRequest());
+
+    } catch(e) {
+      dispatch(errorRequest(e.message));
+    }
+
+  };
+};
+
+export const loadSingleProductRequest = (id) => {
+  return async dispatch => {
+
+      dispatch(startRequest());
+      try {
+          let res = await axios.get(`${API_URL}/data/${id}`);
+          await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+          await dispatch(loadSingleProduct(res.data));
+          dispatch(endRequest());
+      } catch(e) {
+          dispatch(errorRequest(e.message));
+      }
+  }
+};
+
+export const postCart = (cart, price) => {
+  return async dispatch => {
+
+    dispatch(startRequest());
+    try {
+
+        await axios.post(`${API_URL}/data/summary`, cart);
+        await axios.post(`${API_URL}/data/summary`, price);
+        await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+        dispatch(makeOrder());
+        dispatch(endRequest());
+
+    } catch(e) {
+        dispatch(errorRequest(e.message));
+    }
+}
+}
+
+
+
 
 // REDUCER 
 
 
 export default function productReducer(state = initialState, action = {}) {
   switch (action.type) {
+    case LOAD_DATA:
+
+      return { ...state, data: action.payload, currentDisplay: action.payload };
+    case START_REQUEST:
+
+      return { ...state, data: [], singleProduct: [], request: { pending: true, error: null, success: null } };
+    case END_REQUEST:
+
+      return { ...state, request: { pending: false, error: null, success: true } };
+    case ERROR_REQUEST:
+
+      return { ...state, request: { pending: false, error: action.error, success: false } };
+    case RESET_REQUEST:
+      
+      return {...state, request: { pending: false, error: null, success: null } };
+    case LOAD_SINGLE_PRODUCT:
+
+      return { ...state, singleProduct: action.payload };
+
     case ADD_TO_CART:
 
       const productToAdd = action.payload;
       productToAdd.countNumber += 1;
 
       return {
-        ...state, cart: state.cart.concat(productToAdd)
+        ...state, cart: state.cart.concat(productToAdd), orderStatus: false
       }
 
     case DELETE_FROM_CART:
@@ -67,11 +163,7 @@ export default function productReducer(state = initialState, action = {}) {
       return {
         ...state, cart: filteredCart
       }
-    case PAGE_CHANGE:
 
-      return {
-        ...state, page: action.payload
-      } 
     case PLUS_TO_COUNTER:
 
       const productToPlus = state.cart.find(el => el.id === action.id);
@@ -125,6 +217,7 @@ export default function productReducer(state = initialState, action = {}) {
     
     case SORT_BY:
       let newData;
+
       if(action.key === 'asc' || action.key === 'desc') {
         newData = state.data.sort((a, b) => action.key === 'asc' ? parseFloat(a.price) - parseFloat(b.price) : parseFloat(b.price) - parseFloat(a.price));
       } else if(action.key === 'AtoZ') {
@@ -134,22 +227,34 @@ export default function productReducer(state = initialState, action = {}) {
       }
 
       return {
-        ...state, data: newData, sortDirection: action.key
+        ...state, currentDisplay: newData, data: newData, sortDirection: action.key
       }
+
     case OPEN_DISCOUNT_INPUT:
 
       return {
         ...state, discountInput: true
       }
-    case TOGGLE_SWITCH:
-      const findProduct = state.data.find(el => el.id === action.id);
-      findProduct.food = !findProduct.food;
 
-      const newDataArr = state.data.map(el => el.id === action.id ? findProduct : el);
+    case SEARCH: 
+      const filteredBySearch = state.data.filter(el => el.name.toLowerCase().indexOf(action.input.toLowerCase()) !== -1);
 
       return {
-        ...state, data: newDataArr
+        ...state, currentDisplay: filteredBySearch
       }
+
+    case MAKE_ORDER:
+
+      return {
+        ...state, orderStatus: true, cart: [], totalPrice: 0
+      }
+
+    case RESET_SORT:
+
+      return {
+        ...state, sortDirection: ''
+      }
+
     default:
       return state;
   }

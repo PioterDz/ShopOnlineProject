@@ -22,8 +22,11 @@ class Pagination extends React.Component {
     
     render() {
 
-        const { numberOfPages, currentPage } = this.props;
+        const { currentPage, displayPerPage, numberOfProducts } = this.props;
 
+        const numberOfPages = Math.ceil(numberOfProducts / displayPerPage);
+
+        if(numberOfProducts <= displayPerPage) return '';
         return (
             <ul className="Pagination offset-sm-7 offset-lg-8 offset-xl-9">
                 <FontAwesomeIcon onClick={this.previousPage} icon="arrow-left" className={"mt-1 " + (currentPage !== 1 ? "visible" : "invisible")} />
@@ -41,7 +44,8 @@ class Pagination extends React.Component {
 Pagination.propTypes = {
     onPageChange: PropTypes.func.isRequired,
     currentPage: PropTypes.number.isRequired,
-    numberOfPages: PropTypes.number.isRequired,
+    numberOfProducts: PropTypes.number.isRequired,
+    displayPerPage: PropTypes.number.isRequired
 }
 
 export default Pagination;

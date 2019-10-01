@@ -43,7 +43,7 @@ class DiscountButton extends React.Component {
         else if(!discountStatus && inputStatus && codeInvalid) return <Button className="code" color="danger" onClick={handleBackToInput}>nie ten kod, powrót</Button>
         else if(!discountStatus && inputStatus) return (
             <div className="code">
-                <input type="text" value={value} className="DiscountInput" onChange={handleChange} />
+                <input type="text" value={value} className="inputComponent" onChange={handleChange} />
                 <Button color="success" className="btn btn-sm ml-3" onClick={handleSubmit}>zatwierdź</Button>
             </div>
         );

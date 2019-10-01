@@ -10,7 +10,7 @@ const Logo = (props) => {
     return (
         <div className="Logo">
             <FontAwesomeIcon icon="bars" className="Bar d-lg-none" size="2x" onClick={toggleMenu} />
-            <Link className="Logo" to="/home">
+            <Link className="Logo" to="/">
                 <h1>bzdUrlop</h1>
                 <p>bardzo zasłużenie dany</p>
             </Link>

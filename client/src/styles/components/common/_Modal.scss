@@ -1,0 +1,19 @@
+.Modal {
+    
+    .modal-content {
+        border: none;
+    }
+
+    .ModalHeader, .ModalFooter {
+        background-color: $light-dark;
+        color: $primary;
+    }
+    
+    .ModalBody {
+        background-color: $light-dark;
+        color: $primary;
+        text-align: center;
+        font-size: 16px;
+    }
+}
+
