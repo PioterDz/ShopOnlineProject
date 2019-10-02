@@ -1,0 +1,16 @@
+.Pagination {
+    @include flex(center, center, row);
+    margin-top: 20px;
+    @include frame-model($background-transparent, 10px);
+
+    .ListOfPagesNumbers {
+        list-style-type: none;
+        margin: 0 10px 2.5px 10px;
+        @include block-size(14px, 16px);
+        @include onhoverlist($dark, $light-dark);
+    }
+
+    .visible {
+        @include onhoverlist($dark, $light-dark);
+    }
+}

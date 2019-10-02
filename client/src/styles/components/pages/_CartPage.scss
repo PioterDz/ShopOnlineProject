@@ -1,0 +1,63 @@
+.CartPage {
+    @include flex(space-between, center, column);
+    min-height: 50vh;
+
+    .cartHeader {
+        color: $primary;
+    }
+
+    h1 {
+        align-self: flex-start;
+    }
+
+    .ProductInCartDisplay {
+        width: 100%;
+        @include frame-model($background-transparent, 40px);
+        
+        .SingleProductInCart {
+            width: 100%;
+            @include flex(space-around, center, column);
+
+            .DescInCart {
+                @include flex(center, center, column);
+            }
+        }
+    }
+
+    .CartSummary {
+        align-self: flex-end;
+        @include flex(center, flex-start, column);
+
+        .totalPrice {
+            color: white;
+            margin: 15px 0;
+            align-self: flex-end;
+        }
+
+        .price-popup {
+            animation: popup 0.7s;
+        }
+    }
+
+    a {
+        @include flex(flex-end, center, row);
+        width: 100%;
+    }
+
+    .payBtn {
+        align-self: flex-end;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .CartPage {
+        
+        .ProductInCartDisplay {
+            
+            .SingleProductInCart {
+                @include flex(space-around, center, row);
+            }
+        }
+    }
+}

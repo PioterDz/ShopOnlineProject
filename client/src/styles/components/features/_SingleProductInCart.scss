@@ -1,0 +1,39 @@
+.SingleProductInCart {
+
+    a {
+        @include flex(center, center, row);
+
+        img {
+
+            &:hover {
+                @extend %popup-animation;
+                z-index: 2;
+            }
+        }
+    }
+
+    .DescInCart {
+
+        h3 {
+            margin-top: 20px;
+        }
+
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .SingleProductInCart {
+
+        .DescInCart {
+
+            h3 {
+                margin: 0;
+            }
+        }
+    }
+}

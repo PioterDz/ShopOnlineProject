@@ -1,0 +1,53 @@
+.MenuList {
+    @include flex(space-around, center, row);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    text-transform: uppercase;
+
+    .listMargin {
+        margin: 10px 0;
+    }
+
+    .navlink {
+        color: $primary;
+        text-decoration: none;
+
+        &:hover {
+            @extend %onhover;
+            color: $third;
+        }
+    }
+}
+
+.dropDown {
+    animation: dropDown 0.5s ease-out;
+}
+
+.dropDown-d1 {
+    animation: dropDown 0.75s ease-out;
+}
+
+.dropDown-d2 {
+    animation: dropDown 1s ease-out;
+}
+
+.dropDown-d3 {
+    animation: dropDown 1.25s ease-out;
+}
+
+
+.MenuOpen {
+    @include flex(flex-start, flex-start, column);
+    position: absolute;
+    top: 0;
+    transform: translate(0, 60%);
+
+    .navlink {
+
+        &:hover {
+            @include frame-model($background-transparent, 10px);
+        }
+    }
+}

@@ -1,0 +1,23 @@
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.page {
+    margin: 0 30px;
+}
+
+.inputComponent {
+    @include frame-model($background-transparent, 15px);
+    color: $primary;
+    border: none;
+}
+
+.numbers {
+    font-family: 'Roboto', sans-serif;
+}
+
+.active {
+    color: $third !important;
+}

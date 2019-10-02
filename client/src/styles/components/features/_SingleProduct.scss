@@ -1,0 +1,27 @@
+.SingleProduct {
+    margin: 15px;
+    height: 100%;
+    @include frame-model($background-transparent, 20px);
+
+    &:hover {
+        @extend %popup-animation;
+        background-color: $light-dark;
+        box-shadow: 0 0 20px 10px $dark;
+    }
+
+    .hidden-text {
+        height: 18px;
+    }
+
+    p {
+        color: $primary;
+    }
+    
+    .numbers {
+        color: $third;
+    }
+
+    img {
+        width: 100%;
+    }
+}

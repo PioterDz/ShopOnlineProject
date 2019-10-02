@@ -6,11 +6,20 @@
   "author": "Piotr Dzienis <dojlidy.zubr@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "npm-run-all -p -l start:*",
-    "start:server": "cd server && node server.js",
-    "start:client": "cd client && yarn start"
+    "start": "npm-run-all -p -l start:server",
+    "start:server": "cd server && yarn start",
+    "client:start": "cd client && yarn start",
+    "runall": "npm-run-all -p -l start:server client:start",
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "postinstall": "run-p install:*",
+    "build": "run-p build:*",
+    "build:client": "cd client && npm run build"
   },
   "dependencies": {
     "npm-run-all": "4.1.5"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

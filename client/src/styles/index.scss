@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite|Unkempt&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+@import './common/custom';
+@import './common/animations';
+@import './common/variables';
+@import './common/mixins';
+@import './common/global';
+
+@import './components/layout/MainLayout';
+@import './components/layout/PageContainer';
+
+@import './components/pages/HomePage';
+@import './components/pages/ProductPage';
+@import './components/pages/CartPage';
+@import './components/pages/ContactPage';
+@import './components/pages/NotFoundPage';
+@import './components/pages/FaqPage';
+@import './components/pages/RulesPage';
+@import './components/pages/SummaryPage';
+
+@import './components/features/NavBar';
+@import './components/features/Footer';
+@import './components/features/SingleProduct';
+@import './components/features/Sort';
+@import './components/features/SingleProductInCart';
+@import './components/features/FooterMenuList';
+@import './components/features/ProductsList';
+@import './components/features/MenuList';
+
+@import './components/common/CartIcon';
+@import './components/common/Counter';
+@import './components/common/Logo';
+@import './components/common/Pagination';
+@import './components/common/Modal';
+@import './components/common/DiscountButton';
+@import './components/common/LoadSpinner';
+@import './components/common/Switch';
+@import './components/common/SearchBox';
+@import './components/common/DropDown';
+@import './components/common/Alert';
+
+
+
+
+
