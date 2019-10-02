@@ -76,7 +76,7 @@ export const loadDataRequest = () => {
     try {
 
       let res = await axios.get(`${API_URL}/data`);
-      await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+      
       dispatch(loadData(res.data));
       dispatch(endRequest());
 
@@ -93,7 +93,7 @@ export const loadSingleProductRequest = (id) => {
       dispatch(startRequest());
       try {
           let res = await axios.get(`${API_URL}/data/${id}`);
-          await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+          
           await dispatch(loadSingleProduct(res.data));
           dispatch(endRequest());
       } catch(e) {
@@ -110,7 +110,7 @@ export const postCart = (cart, price) => {
 
         await axios.post(`${API_URL}/data/summary`, cart);
         await axios.post(`${API_URL}/data/summary`, price);
-        await new Promise((resolve, reject) => setTimeout(resolve, 2000));
+        
         dispatch(makeOrder());
         dispatch(endRequest());
 

@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const config = require('./config');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
 const app = express();
@@ -28,6 +27,6 @@ db.once('open', () => {
 });
 db.on('error', (err) => console.log('Error ' + err));
 
-app.listen(config.PORT, function(){
-  console.log('Server is running on port:', config.PORT);
+app.listen(process.env.PORT || 8000, function(){
+  console.log('Server is running on port:', process.env.PORT || 8000);
 });
