@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const app = express();
 const env = require('dotenv').config();
+const path = require('path');
 const mongoSanitize = require('express-mongo-sanitize');
 
 const productRoutes = require('./routes/product.routes');
@@ -17,7 +18,13 @@ app.use(mongoSanitize({
   replaceWith: '_'
 }));
 
+app.use(express.static(path.join(__dirname + '/../client/build')));
+
 app.use('/api', productRoutes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/../client/build/index.html'));
+});
 
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-aqaim.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true });
 let db = mongoose.connection;
