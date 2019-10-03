@@ -18,7 +18,7 @@ DB_USER=peter
 DB_PASS=mongomongo
 ```
 
-For run app locally type command: `yarn runall`, use port :3000 or :8000.
+For run app locally type command: `yarn runall`, use port :8000.
 
 To build run `yarn build`.
 
