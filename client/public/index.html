@@ -22,6 +22,8 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <link rel="startup-image" href="icons/splash/splashx392.png" media="(max-device-width: 767.9px) and (max-device-height: 811.9px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+    <link rel="startup-image" href="icons/splash/splashx392.png" media="(min-device-width: 768px) and (min-device-height: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait)">
     <title>React App</title>
   </head>
   <body>
@@ -37,5 +39,13 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script>
+      if('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/sw.js')
+              .then(function () {
+                  console.log('Service Worker Registered');
+              });
+      }
+    </script>
   </body>
 </html>
