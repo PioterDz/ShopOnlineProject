@@ -4,6 +4,8 @@ This project was created for education purposes. Stack: **_react, react-redux, r
 
 You can see it online at: https://shop-edu.herokuapp.com/
 
+Last commit (ignoring README.md change commits) : https://github.com/PioterDz/ShopOnlineProject/commit/6f54a6a6eb8c38e0d8e052ba7dbcf7b391fd2d63
+
 App was created with `create-react-app`. If you want to run it locally, clone repo, and run command `yarn install`.
 To run app properly you also need to create two `.env` file in client and server folder.
 
